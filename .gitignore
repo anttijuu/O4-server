@@ -1,0 +1,8 @@
+bin/
+target/
+*.jks
+*.db
+*.class
+*.txt
+.DS_Store
+
