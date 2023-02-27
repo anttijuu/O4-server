@@ -3,9 +3,7 @@ package oy.tol.chatserver;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 
-import com.sun.net.httpserver.BasicAuthenticator;
-
-public class ChatAuthenticator extends BasicAuthenticator {
+public class ChatAuthenticator {
 	
 	public static final int MIN_USERNAME_LENGTH = 2;
 	public static final int MAX_USERNAME_LENGTH = 20;
@@ -14,7 +12,6 @@ public class ChatAuthenticator extends BasicAuthenticator {
 	private static final int MAX_EMAIL_LENGTH = 256;
 
 	ChatAuthenticator() {
-		super("chat");
 	}
 	
 	public boolean addUser(User user) throws SQLException {
@@ -30,7 +27,6 @@ public class ChatAuthenticator extends BasicAuthenticator {
 		return false;
 	}
 
-	@Override
 	public boolean checkCredentials(String username, String password) {
 		return ChatDatabase.getInstance().isRegisteredUser(username, password);
 	}

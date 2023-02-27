@@ -30,14 +30,17 @@ import com.sun.net.httpserver.HttpsServer;
 import com.sun.net.httpserver.HttpServer;
 
 public class ChatServer {
-	
+
 	// TODO: use the same color output lib than in Client. ERRORS in red.
 	// TODO: Change POSTs to return 204 since no data is returned
-	// TODO: Should chat get return 304 Not Modified when If-Modified-Since returns nothing?
+	// TODO: Should chat get return 304 Not Modified when If-Modified-Since returns
+	// nothing?
 	// TODO: Client should use "Accept: application/json" header in GET /chat
-	// TODO: Check & apply: https://anantjain60.medium.com/secure-coding-techniques-in-java-9b81901beea8
-	// TODO: Include SQL query parameter sanitation: https://www.baeldung.com/sql-injection
-	//       https://owasp.org/www-community/attacks/SQL_Injection
+	// TODO: Check & apply:
+	// https://anantjain60.medium.com/secure-coding-techniques-in-java-9b81901beea8
+	// TODO: Include SQL query parameter sanitation:
+	// https://www.baeldung.com/sql-injection
+	// https://owasp.org/www-community/attacks/SQL_Injection
 	// TODO: Implement 418 I'm a teapot (RFC 2324, RFC 7168) ;)
 	// TODO: Check if this influences on cert usage:
 	// https://stackoverflow.com/questions/26792813/why-do-i-get-no-name-matching-found-certificateexception
@@ -64,9 +67,9 @@ public class ChatServer {
 				HttpsServer tmpServer = HttpsServer.create(new InetSocketAddress(serverPort), 0);
 				log("Initializing SSL Context...");
 				SSLContext sslContext = chatServerSSLContext();
-				tmpServer.setHttpsConfigurator (new HttpsConfigurator(sslContext) {
+				tmpServer.setHttpsConfigurator(new HttpsConfigurator(sslContext) {
 					@Override
-					public void configure (HttpsParameters params) {
+					public void configure(HttpsParameters params) {
 						try {
 							// get the remote address if needed
 							InetSocketAddress remote = params.getClientAddress();
@@ -112,14 +115,16 @@ public class ChatServer {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (KeyStoreException | NoSuchAlgorithmException | CertificateException | IOException | UnrecoverableKeyException | KeyManagementException e) {
+		} catch (KeyStoreException | NoSuchAlgorithmException | CertificateException | IOException
+				| UnrecoverableKeyException | KeyManagementException e) {
 			log("Something wrong with the certificate!", ANSI_RED);
 			e.printStackTrace();
 		}
 		log("Server finished, bye!");
 	}
 
-	private static SSLContext chatServerSSLContext() throws KeyStoreException, NoSuchAlgorithmException, CertificateException, IOException, UnrecoverableKeyException, KeyManagementException {
+	private static SSLContext chatServerSSLContext() throws KeyStoreException, NoSuchAlgorithmException,
+			CertificateException, IOException, UnrecoverableKeyException, KeyManagementException {
 		char[] passphrase = certificatePassword.toCharArray();
 		KeyStore ks = KeyStore.getInstance("JKS");
 		ks.load(new FileInputStream(certificateFile), passphrase);
@@ -134,7 +139,7 @@ public class ChatServer {
 		ssl.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
 		return ssl;
 	}
-	
+
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
@@ -189,18 +194,18 @@ public class ChatServer {
 		}
 		certificateFile = config.getProperty("certfile");
 		istream.close();
-		if (dbFile == null || 
-			contentFormat == null || 
-			certificateFile == null) {
-		   throw new RuntimeException("ChatServer Properties file does not have properties set.");
+		if (dbFile == null ||
+				contentFormat == null ||
+				certificateFile == null) {
+			throw new RuntimeException("ChatServer Properties file does not have properties set.");
 		} else {
 			log("Server port: " + serverPort, ANSI_YELLOW);
-		   log("Database file: " + dbFile, ANSI_YELLOW);
-		   log("Use https: " + useHttps, ANSI_YELLOW);
-		   log("Certificate file: " + certificateFile, ANSI_YELLOW);
-		   log("Content format: " + contentFormat, ANSI_YELLOW);
-		   log("Use Modified-Since: " + useModifiedHeaders, ANSI_YELLOW);
-		   log("Use HTTP thread pool: " + useHttpThreadPool, ANSI_YELLOW);
+			log("Database file: " + dbFile, ANSI_YELLOW);
+			log("Use https: " + useHttps, ANSI_YELLOW);
+			log("Certificate file: " + certificateFile, ANSI_YELLOW);
+			log("Content format: " + contentFormat, ANSI_YELLOW);
+			log("Use Modified-Since: " + useModifiedHeaders, ANSI_YELLOW);
+			log("Use HTTP thread pool: " + useHttpThreadPool, ANSI_YELLOW);
 		}
-	 }
+	}
 }

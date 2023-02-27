@@ -8,18 +8,18 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>15</maven.compiler.source>
-		<maven.compiler.target>15</maven.compiler.target>
+		<maven.compiler.source>18</maven.compiler.source>
+		<maven.compiler.target>18</maven.compiler.target>
 	</properties>
-	
+
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>3.9.0</version>
 				<configuration>
-					<release>15</release>
+					<release>18</release>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -36,7 +36,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>oy.tol.chatserver.ChatServer</mainClass>
+							<mainClass>oy.tol.chatserver.ChatSocketServer</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
