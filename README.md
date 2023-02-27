@@ -1,14 +1,10 @@
 # O3-chat-server
 
-A Java chat server implemented for Programming 3 course. The course teachers server side programming.
+A Java chat server implemented for Programming 4 course. The course teachers client side GUI programming.
 
-Implementation is configurable due to the stepwise advancement of the course. This is why code has lots of places where e.g. checking is done if content is either text only or `application/json`.
+For this, the `chatserver.properties` contains settings one can use to modify the behaviour of the server.
 
-First, students implement a simple server with HTTP, without encryption and text only content. Then gradually HTTPS is added, along with JSON payload, database for storing the chat messages, etc.
-
-For this, the `chatserver.properties` contains settings one can use to switch these features on or off.
-
-The server uses a self signed certificate. If using a real one, 
+The server uses a self signed certificate.
 
 ## Building
 
@@ -31,3 +27,4 @@ java -jar target/ChatServer-0.0.1-SNAPSHOT-jar-with-dependencies.jar chatserver.
 Where the first parameter is the configuration file you wish to use to run the server, and the second parameter is the password to the self-signed certificate server is using for HTTPS.
 
 You can stop the server in a controlled way from the console with `/quit` command.
+

@@ -69,7 +69,7 @@ public class ChatHandler implements HttpHandler {
 			result.response = "Server error: " + e.getMessage();
 		}
 		if (result.code >= 400) {
-			ChatServer.log("*** Error in /chat: " + result.code + " " + result.response);
+			// // // ChatServer.log("*** Error in /chat: " + result.code + " " + result.response);
 			byte [] bytes = result.response.getBytes("UTF-8");
 			exchange.sendResponseHeaders(result.code, bytes.length);
 			OutputStream os = exchange.getResponseBody();
@@ -104,28 +104,28 @@ public class ChatHandler implements HttpHandler {
 			return result;
 		}
 		String user = exchange.getPrincipal().getUsername();
-		String expectedContentType = ChatServer.contentFormat;
+		String expectedContentType = ""; // ChatServer.contentFormat;
 		if (contentType.equalsIgnoreCase(expectedContentType)) {
 			InputStream stream = exchange.getRequestBody();
 			String text = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))
 				        .lines()
 				        .collect(Collectors.joining("\n"));
-			ChatServer.log("Got chat message to ChatHandler thread id " + Thread.currentThread().getId());
+			// ChatServer.log("Got chat message to ChatHandler thread id " + Thread.currentThread().getId());
 			stream.close();
 			if (text.trim().length() > 0) {
 				processMessage(user, text);
 				exchange.sendResponseHeaders(result.code, -1);
-				ChatServer.log("New chatmessage saved");
+				// ChatServer.log("New chatmessage saved");
 			} else {
 				result.code = 400;
 				result.response = "No content in request.";
 	
-				ChatServer.log(result.response);
+				// ChatServer.log(result.response);
 			}
 		} else {
 			result.code = 411;
 			result.response = "Content-Type must be application/json.";
-			ChatServer.log(result.response);
+			// ChatServer.log(result.response);
 		}
 		return result;
 	}
@@ -134,16 +134,16 @@ public class ChatHandler implements HttpHandler {
 		if (ChatServer.contentFormat.equals("application/json")) {
 			JSONObject jsonObject = new JSONObject(text);
 			ChatMessage newMessage = new ChatMessage();
-			newMessage.nick = jsonObject.getString("user");
+			newmessage.getNick() = jsonObject.getString("user");
 			String dateStr = jsonObject.getString("sent");
 			OffsetDateTime odt = OffsetDateTime.parse(dateStr);
 			newMessage.sent = odt.toLocalDateTime();
-			newMessage.message = jsonObject.getString("message");
+			newmessage.getMessage() = jsonObject.getString("message");
 			ChatDatabase.getInstance().insertMessage(user, newMessage);
 		} else {
 			ChatMessage newMessage = new ChatMessage();
-			newMessage.nick = user;
-			newMessage.message = text;
+			newmessage.getNick() = user;
+			newmessage.getMessage() = text;
 			LocalDateTime now = ZonedDateTime.now(ZoneId.of("UTC")).toLocalDateTime();
 			newMessage.sent = now;
 			ChatDatabase.getInstance().insertMessage(user, newMessage);
@@ -159,21 +159,21 @@ public class ChatHandler implements HttpHandler {
 		LocalDateTime messagesSince = null;
 		if (requestHeaders.containsKey("If-Modified-Since")) {
 			String requestSinceString = requestHeaders.getFirst("If-Modified-Since");
-			ChatServer.log("Client wants messages from " + requestSinceString);
+			// ChatServer.log("Client wants messages from " + requestSinceString);
 			ZonedDateTime odt = ZonedDateTime.parse(requestSinceString, httpDateFormatter);
 			messagesSince = odt.toLocalDateTime();
 		} else {
-			ChatServer.log("No If-Modified-Since header in request");
+			// ChatServer.log("No If-Modified-Since header in request");
 		}
 
 		long messagesSinceLong = -1;
 		if (null != messagesSince) {
 			messagesSinceLong = messagesSince.toInstant(ZoneOffset.UTC).toEpochMilli();
-			ChatServer.log("Wants since: " + messagesSince);
+			// ChatServer.log("Wants since: " + messagesSince);
 		}
 		List<ChatMessage> messages = ChatDatabase.getInstance().getMessages(messagesSinceLong);
 		if (null == messages) {
-			ChatServer.log("No new messages to deliver to client");
+			// ChatServer.log("No new messages to deliver to client");
 			result.code = 204;
 			exchange.sendResponseHeaders(result.code, -1);			
 			return result;
@@ -190,8 +190,8 @@ public class ChatHandler implements HttpHandler {
 			if (includeThis) {
 				if (ChatServer.contentFormat.equals("application/json")) {
 					JSONObject jsonMessage = new JSONObject();
-					jsonMessage.put("message", message.message);
-					jsonMessage.put("user", message.nick);
+					jsonMessage.put("message", message.getMessage());
+					jsonMessage.put("user", message.getNick());
 					LocalDateTime date = message.sent;
 					ZonedDateTime toSend = ZonedDateTime.of(date, ZoneId.of("UTC"));
 					if (null == newest) {
@@ -208,7 +208,7 @@ public class ChatHandler implements HttpHandler {
 					if (null == plainList) {
 						plainList = new ArrayList<String>();
 					}
-					plainList.add(message.message);
+					plainList.add(message.getMessage());
 				}
 			}
 		}
@@ -221,21 +221,21 @@ public class ChatHandler implements HttpHandler {
 			isEmpty = true;
 		}
 		if (isEmpty) {
-			ChatServer.log("No new messages to deliver to client since last request");
+			// ChatServer.log("No new messages to deliver to client since last request");
 			result.code = 204;
 			exchange.sendResponseHeaders(result.code, -1);
 		} else {
-			ChatServer.log("Delivering " + responseMessages.length() + " messages to client");
+			// ChatServer.log("Delivering " + responseMessages.length() + " messages to client");
 			Headers headers = exchange.getResponseHeaders();
 			headers.add("Content-Type", ChatServer.contentFormat);
 			if (null != newest && ChatServer.useModifiedHeaders) {
 				newest = newest.plus(1, ChronoUnit.MILLIS);
-				ChatServer.log("Final newest: " + newest);
+				// ChatServer.log("Final newest: " + newest);
 				String lastModifiedString = newest.format(httpDateFormatter);
 				headers.add("Last-Modified", lastModifiedString);
-				ChatServer.log("Added Last-Modified header to response");
+				// ChatServer.log("Added Last-Modified header to response");
 			} else {
-				ChatServer.log("Did not put Last-Modified header in response");
+				// ChatServer.log("Did not put Last-Modified header in response");
 			}
 			byte [] bytes;
 			if (ChatServer.contentFormat.equals("application/json")) {

@@ -1,5 +1,6 @@
 package oy.tol.chatserver;
 
+import java.io.Console;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,6 +15,9 @@ import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.net.ServerSocketFactory;
@@ -25,24 +29,52 @@ import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 
-public class ChatSocketServer {
+public class ChatSocketServer implements Runnable{
+
+	private boolean running = true;
+	private String dbFile = "O4-chat.db";
+	private int serverPort = 10000;
+	private boolean useSSL = false;
+	private String certificateFile = "keystore.jks";
+	private String certificatePassword = "";
+	
+	private static ChatSocketServer server;
+	private ChatChannels channels;
 
 	public static void main(String[] args) {
 		try {
-
-			log("Launching ChatServer...");
+			System.out.println("Launching ChatServer...");
 			if (args.length != 2) {
-				log("Usage java -jar jar-file.jar config.properties certpassword");
+				System.out.println("Usage java -jar jar-file.jar config.properties certpassword");
 				return;
 			}
-			certificatePassword = args[1];
-			log("Reading configuration...");
-			readConfiguration(args[0]);
+			server = new ChatSocketServer(args);
+			new Thread(server).start();
+			Console console = System.console();
+			while (server.running) {
+				String input = console.readLine();
+				if (input.equalsIgnoreCase("/quit")) {
+					server.running = false;
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private ChatSocketServer(String [] args) throws FileNotFoundException, IOException {
+		log("Reading configuration...");
+		readConfiguration(args[0]);
+		certificatePassword = args[1];
+	}
+
+	@Override
+	public void run() {
+		try {
 			log("Initializing database...");
 			ChatDatabase database = ChatDatabase.getInstance();
 			database.open(dbFile);
 			log("Initializing ChatServer...");
-
 			ServerSocket serverSocket;
 			if (useSSL) {
 				SSLContext sslContext = chatServerSSLContext();
@@ -52,24 +84,26 @@ public class ChatSocketServer {
 				ServerSocketFactory socketFactory = ServerSocketFactory.getDefault();
 				serverSocket = socketFactory.createServerSocket(serverPort);
 			}
-			while (true) {
+			channels = new ChatChannels();
+			while (running) {
+				int sessionCount = 0;
 				Socket clientSocket = serverSocket.accept();
-				clientSocket.getOutputStream().write(new String("Hello world!\n").getBytes());
-				clientSocket.close();
+				ChatSession newSession = new ChatSession(clientSocket, ++sessionCount);
+				channels.add(newSession);
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (KeyStoreException | NoSuchAlgorithmException | CertificateException | IOException
 				| UnrecoverableKeyException | KeyManagementException e) {
 			log("Something wrong with the certificate!", ANSI_RED);
 			e.printStackTrace();
+		} finally {
+			ChatDatabase.getInstance().close();
 		}
 		log("Server finished, bye!");
-
 	}
 
-	private static SSLContext chatServerSSLContext() throws KeyStoreException, NoSuchAlgorithmException,
+	private SSLContext chatServerSSLContext() throws KeyStoreException, NoSuchAlgorithmException,
 			CertificateException, IOException, UnrecoverableKeyException, KeyManagementException {
 		char[] passphrase = certificatePassword.toCharArray();
 		KeyStore ks = KeyStore.getInstance("JKS");
@@ -96,21 +130,16 @@ public class ChatSocketServer {
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
 
-	public static void log(String message) {
+	public void log(String message) {
 		System.out.println(ANSI_GREEN + LocalDateTime.now() + ANSI_RESET + " " + message);
 	}
 
-	public static void log(String message, String color) {
+	public void log(String message, String color) {
 		System.out.println(color + LocalDateTime.now() + ANSI_RESET + " " + message);
 	}
 
-	static String dbFile = "O4-chat.db";
-	static int serverPort = 10000;
-	static boolean useSSL = false;
-	static String certificateFile = "keystore.jks";
-	static String certificatePassword = "";
 
-	private static void readConfiguration(String configFileName) throws FileNotFoundException, IOException {
+	private void readConfiguration(String configFileName) throws FileNotFoundException, IOException {
 		log("Using configuration: " + configFileName, ANSI_YELLOW);
 		File configFile = new File(configFileName);
 		Properties config = new Properties();

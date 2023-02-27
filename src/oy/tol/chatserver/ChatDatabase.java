@@ -16,7 +16,6 @@ import org.apache.commons.codec.digest.Crypt;
 
 public class ChatDatabase {
 
-	// TODO: Change from building queries as strings to prepared statements.
 	private Connection connection = null;
 	private static ChatDatabase singleton = null;
 	private SecureRandom secureRandom = null;
@@ -51,7 +50,7 @@ public class ChatDatabase {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				ChatServer.log("*** ERROR in closing the database connection: " + e.getMessage());
+				// ChatServer.log("*** ERROR in closing the database connection: " + e.getMessage());
 				e.printStackTrace();
 			}
 			connection = null;
@@ -67,7 +66,7 @@ public class ChatDatabase {
 			String salt = "$6$" + Base64.getEncoder().encodeToString(bytes);
 			String hashedPassword = Crypt.crypt(user.getPassword(), salt);
 			long duration = System.currentTimeMillis() - timestamp;
-			ChatServer.log("Hashing and salting took " + duration + " ms");	
+			// ChatServer.log("Hashing and salting took " + duration + " ms");	
 			String insertUser = "insert into users values (?, ?, ?)";
 			PreparedStatement statement = connection.prepareStatement(insertUser);
 			statement.setString(1, user.getName());
@@ -77,7 +76,7 @@ public class ChatDatabase {
 			statement.close();
 			result = true;
 		} else {
-			ChatServer.log("User already registered: " + user.getName());
+			// ChatServer.log("User already registered: " + user.getName());
 		}
 		return result;
 	}
@@ -99,8 +98,8 @@ public class ChatDatabase {
 				}
 				queryStatement.close();
 			} catch (SQLException e) {
-				ChatServer.log("Could not check isUserNameRegistered: " + username);
-				ChatServer.log("Reason: " + e.getErrorCode() + " " + e.getMessage());
+				// ChatServer.log("Could not check isUserNameRegistered: " + username);
+				// ChatServer.log("Reason: " + e.getErrorCode() + " " + e.getMessage());
 			}
 
 		}
@@ -128,11 +127,11 @@ public class ChatDatabase {
 				}
 				queryStatement.close();
 			} catch (SQLException e) {
-				ChatServer.log("Could not check isRegisteredUser: " + username);
-				ChatServer.log("Reason: " + e.getErrorCode() + " " + e.getMessage());
+				// ChatServer.log("Could not check isRegisteredUser: " + username);
+				// ChatServer.log("Reason: " + e.getErrorCode() + " " + e.getMessage());
 			}
 			if (!result) {
-				ChatServer.log("Not a registered user!");
+				// ChatServer.log("Not a registered user!");
 			}
 		}
 		return result;
@@ -143,9 +142,9 @@ public class ChatDatabase {
 		PreparedStatement createStatement;
 		createStatement = connection.prepareStatement(insertMsgStatement);
 		createStatement.setString(1, user);
-		createStatement.setString(2, message.nick);
+		createStatement.setString(2, message.getNick());
 		createStatement.setLong(3, message.dateAsLong());
-		createStatement.setString(4, message.message);
+		createStatement.setString(4, message.getMessage());
 		createStatement.executeUpdate();
 		createStatement.close();
 	}
@@ -159,7 +158,7 @@ public class ChatDatabase {
 			queryMessages += "where sent > " + since + " ";
 		}
 		queryMessages += " order by sent desc limit 100"; // limit 100";
-		ChatServer.log(queryMessages);
+		// ChatServer.log(queryMessages);
 		queryStatement = connection.createStatement();
 		ResultSet rs = queryStatement.executeQuery(queryMessages);
 		int recordCount = 0;
@@ -170,9 +169,7 @@ public class ChatDatabase {
 			String user = rs.getString("nick");
 			String message = rs.getString("message");
 			long sent = rs.getLong("sent");
-			ChatMessage msg = new ChatMessage();
-			msg.nick = user;
-			msg.message = message;
+			ChatMessage msg = new ChatMessage(user, message);
 			msg.setSent(sent);
 			messages.add(msg);
 			recordCount++;

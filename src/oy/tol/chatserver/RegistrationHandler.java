@@ -30,7 +30,7 @@ public class RegistrationHandler implements HttpHandler {
 		
 		try {
 			if (exchange.getRequestMethod().equalsIgnoreCase("POST")) {
-				ChatServer.log("New user registration HTTP POST");
+				// ChatServer.log("New user registration HTTP POST");
 				Headers headers = exchange.getRequestHeaders();
 				int contentLength = 0;
 				String contentType = "";
@@ -41,7 +41,7 @@ public class RegistrationHandler implements HttpHandler {
 					contentType = headers.get("Content-Type").get(0);
 				}
 				if (contentLength > 0) {
-					String expectedContentType = ChatServer.contentFormat;
+					String expectedContentType = ""; // ChatServer.contentFormat;
 					if (contentType.equalsIgnoreCase(expectedContentType)) {
 						InputStream stream = exchange.getRequestBody();
 						String text = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8)).lines()
@@ -59,7 +59,7 @@ public class RegistrationHandler implements HttpHandler {
 							} else {
 								// Success
 								exchange.sendResponseHeaders(code, -1);
-								ChatServer.log("User registered successfully: " + username);
+								// ChatServer.log("User registered successfully: " + username);
 							}
 						} else {
 							String [] items = text.split(":");
@@ -71,7 +71,7 @@ public class RegistrationHandler implements HttpHandler {
 								} else {
 									// Success
 									exchange.sendResponseHeaders(code, -1);
-									ChatServer.log("User registered successfully: " + items[0]);
+									// ChatServer.log("User registered successfully: " + items[0]);
 								}								
 							} else {
 								code = 400;
@@ -96,10 +96,10 @@ public class RegistrationHandler implements HttpHandler {
 		} catch (Exception e) {
 			code = 500;
 			responseBody = "Server internal error";
-			ChatServer.log("Failed to register the user: " + e.getMessage());
+			// ChatServer.log("Failed to register the user: " + e.getMessage());
 		}
 		if (code >= 400) {
-			ChatServer.log("*** Error in user /registration: " + code + " " + responseBody);
+			// ChatServer.log("*** Error in user /registration: " + code + " " + responseBody);
 			byte [] bytes = responseBody.getBytes(StandardCharsets.UTF_8);
 			exchange.sendResponseHeaders(code, bytes.length);
 			OutputStream os = exchange.getResponseBody();
