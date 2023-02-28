@@ -4,14 +4,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import oy.tol.chatserver.messages.Message;
+
 public class Channel {
 	private String name = "";
 	private String topic = "";
-	private List<ChatSession> sessions;
+	private List<ChatServerSession> sessions;
 
 	public Channel() {
 		name = "main";
-		topic = "Everything about the universe and more";
+		topic = "Everything about the universe and more you could ever dream of.";
 		sessions = new ArrayList<>();
 	}
 
@@ -35,12 +37,12 @@ public class Channel {
 		this.topic = topic;
 	}
 
-	public void add(ChatSession session) throws IOException {
+	public void add(ChatServerSession session) throws IOException {
 		sessions.add(session);
 		session.setChannel(this);
 	}
 
-	public void remove(ChatSession session) throws IOException {
+	public void remove(ChatServerSession session) throws IOException {
 		sessions.remove(session);
 		session.setChannel(null);
 	}
@@ -51,6 +53,18 @@ public class Channel {
 
 	public int sessionCount() {
 		return sessions.size();
+	}
+
+	public void relayMessage(ChatServerSession fromSession, Message message) {
+		sessions.forEach( session -> {
+			try {
+				if (session != fromSession) {
+					session.write(message);
+				}
+			} catch (IOException e) {
+				// Log error
+			}
+		});	
 	}
 
 }

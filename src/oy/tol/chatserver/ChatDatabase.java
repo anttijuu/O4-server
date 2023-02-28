@@ -14,6 +14,8 @@ import java.util.List;
 
 import org.apache.commons.codec.digest.Crypt;
 
+import oy.tol.chatserver.messages.ChatMessage;
+
 public class ChatDatabase {
 
 	private Connection connection = null;

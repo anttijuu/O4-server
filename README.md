@@ -6,6 +6,89 @@ For this, the `chatserver.properties` contains settings one can use to modify th
 
 The server uses a self signed certificate.
 
+## Messages
+
+Message types:
+
+| ID   | Message Type |
+|------|--------------|
+| 1    | Register user|
+| 2    | Login user   |
+| 3    | Chat message |
+| 4    | Message array|
+| 5    | Join channel |
+| 98   | Status msg   |
+| 99   | Error msg    |
+
+Register message:
+```JSON
+{
+	"type": 1,
+	"userName" : "username here",
+	"password" : "password-here",
+	"email" : "email@here.fi"
+}
+```
+Login message:
+```JSON
+{
+	"type": 2,
+	"userName" : "username here",
+	"password" : "password-here"
+}
+```
+Chat message:
+```JSON
+{
+	"type": 3,
+	"userName" : "username here",
+	"message" : "some message here",
+	"timestamp" : 234141352
+}
+```
+Chat message array:
+```JSON
+[
+	"type": 4,
+	{
+		"userName" : "username here",
+		"message" : "some message here",
+		"timestamp" : 234141352
+	},
+	{
+		"userName" : "username here",
+		"message" : "some message here",
+		"timestamp" : 234141352
+	}
+]
+```
+
+Join channel message:
+```JSON
+{
+	"type": 5,
+	"channel" : "channel",
+}
+```
+
+
+Status message:
+```JSON
+{
+	"type": 98,
+	"message" : "some status message here"
+}
+```
+Error message:
+```JSON
+{
+	"type": 99,
+	"message" : "some error message here"
+}
+```
+
+
+
 ## Building
 
 Build the server (in the root source directory):

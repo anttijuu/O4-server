@@ -84,11 +84,11 @@ public class ChatSocketServer implements Runnable{
 				ServerSocketFactory socketFactory = ServerSocketFactory.getDefault();
 				serverSocket = socketFactory.createServerSocket(serverPort);
 			}
-			channels = new ChatChannels();
+			channels = ChatChannels.getInstance();
 			while (running) {
 				int sessionCount = 0;
 				Socket clientSocket = serverSocket.accept();
-				ChatSession newSession = new ChatSession(clientSocket, ++sessionCount);
+				ChatServerSession newSession = new ChatServerSession(clientSocket, ++sessionCount);
 				channels.add(newSession);
 			}
 		} catch (SQLException e) {
