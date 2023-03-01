@@ -73,7 +73,12 @@ public class ChatServerSession extends Thread {
 	public void run() {
 		while (running && null != socket) {
 			switch (state) {
-				case UNCONNECTED:
+				case UNCONNECTED:				
+					try {
+						close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 					break;
 
 				case CONNECTED:
