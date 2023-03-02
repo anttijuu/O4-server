@@ -17,12 +17,8 @@ import java.time.LocalDateTime;
 import java.util.Properties;
 
 import javax.net.ServerSocketFactory;
-import javax.net.SocketFactory;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLServerSocket;
-import javax.net.ssl.SSLServerSocketFactory;
-import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 
 public class ChatSocketServer implements Runnable {
@@ -34,6 +30,7 @@ public class ChatSocketServer implements Runnable {
 	private String certificatePassword = "";
 	
 	private static ChatSocketServer server;
+	private ServerSocket serverSocket;
 	private ChatChannels channels;
 
 	public static void main(String[] args) {
@@ -49,7 +46,7 @@ public class ChatSocketServer implements Runnable {
 			while (server.running) {
 				String input = console.readLine();
 				if (input.equalsIgnoreCase("/quit")) {
-					server.running = false;
+					server.close();
 				}
 			}
 		} catch (IOException e) {
@@ -67,7 +64,6 @@ public class ChatSocketServer implements Runnable {
 	public void run() {
 		try {
 			log("Initializing ChatServer...");
-			ServerSocket serverSocket;
 			if (useSSL) {
 				SSLContext sslContext = chatServerSSLContext();
 				ServerSocketFactory socketFactory = sslContext.getServerSocketFactory();
@@ -93,6 +89,16 @@ public class ChatSocketServer implements Runnable {
 		log("Server finished, bye!");
 	}
 
+	public void close() {
+		running = false;
+		channels.closeAll("Server is shutting down, bye all!");
+		try {
+			serverSocket.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		serverSocket = null;
+	}
 	private SSLContext chatServerSSLContext() throws KeyStoreException, NoSuchAlgorithmException,
 			CertificateException, IOException, UnrecoverableKeyException, KeyManagementException {
 		char[] passphrase = certificatePassword.toCharArray();

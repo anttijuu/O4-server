@@ -8,14 +8,15 @@ import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
-import java.time.OffsetDateTime;
+import java.util.Arrays;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import oy.tol.chat.ChatMessage;
 import oy.tol.chat.ErrorMessage;
+import oy.tol.chat.JoinMessage;
 import oy.tol.chat.Message;
+import oy.tol.chat.MessageFactory;
 import oy.tol.chat.StatusMessage;
 
 public class ChatServerSession implements Runnable {
@@ -28,7 +29,8 @@ public class ChatServerSession implements Runnable {
 	private Socket socket;
 	private User user;
 	private State state = State.UNCONNECTED;
-	private DataOutputStream out = null;
+	private DataOutputStream out;
+	private DataInputStream inStream;
 	private int sessionID;
 	private boolean running = true;
 
@@ -39,6 +41,7 @@ public class ChatServerSession implements Runnable {
 		this.sessionID = sessionID;
 		state = socket.isConnected() ? State.CONNECTED : State.UNCONNECTED;
 		out = new DataOutputStream(socket.getOutputStream());
+		inStream = new DataInputStream(socket.getInputStream());
 		new Thread(this).start();
 	}
 
@@ -100,41 +103,40 @@ public class ChatServerSession implements Runnable {
 
 	private void write(String message) throws IOException {
 		if (state == State.CONNECTED) {
+			// System.out.println("Writing to client: " + message);
 			byte [] msgBytes = message.getBytes(StandardCharsets.UTF_8);
+			// System.out.println(" " + Arrays.toString(msgBytes));
 			byte[] allBytes = new byte[msgBytes.length + 2];
 			ByteBuffer byteBuffer = ByteBuffer.wrap(allBytes, 0, allBytes.length);
-			short msgLen = (short)allBytes.length;
+			short msgLen = (short)msgBytes.length;
+			// System.out.println("Byte count: " + msgLen);
 			byteBuffer = byteBuffer.putShort(msgLen);
 			byteBuffer = byteBuffer.put(msgBytes);
-			out.write(msgBytes);
+			// System.out.println(" " + Arrays.toString(allBytes));
+			out.write(allBytes);
 		}
 	}
 
 	private void read() {
 		// Read data from socket
-		System.out.println("Receiving data...");
+		// System.out.println("Receiving data...");
 		try {
-			DataInputStream inStream = new DataInputStream(socket.getInputStream());
 			String data = "";
 			byte[] sizeBytes = new byte[2];
 			sizeBytes[0] = inStream.readByte();
 			sizeBytes[1] = inStream.readByte();
 			ByteBuffer byteBuffer = ByteBuffer.wrap(sizeBytes, 0, 2);
 			int bytesToRead = byteBuffer.getShort();
-			System.out.println(sessionID + ": Read " + bytesToRead + " bytes");
+			// System.out.println(sessionID + ": Reading " + bytesToRead + " bytes...");
 
 			if (bytesToRead > 0) {
 				int bytesRead = 0;
-				byte[] messageBytes = new byte[bytesToRead];
-				byteBuffer = ByteBuffer.wrap(messageBytes, 0, bytesToRead);
-				while (bytesToRead > bytesRead) {
-					byteBuffer.put(inStream.readByte());
-					bytesRead++;
-				}
-				if (bytesRead == bytesToRead) {
-					data = new String(messageBytes, 0, bytesRead, StandardCharsets.UTF_8);
-					handleMessage(data);
-				}
+				byte [] messageBytes = new byte[bytesToRead];
+				int read = inStream.read(messageBytes, 0, bytesToRead);
+				// System.out.println("Actually read: " + read + " bytes");
+				data = new String(messageBytes, 0, bytesToRead, StandardCharsets.UTF_8);
+				// System.out.println("Received: " + data);
+				handleMessage(data);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -150,15 +152,15 @@ public class ChatServerSession implements Runnable {
 	private void handleMessage(String data) throws SQLException, IOException, JSONException {
 		try {
 			JSONObject jsonObject = new JSONObject(data);
-			int msgType = jsonObject.getInt("type");
-
+			Message msg = MessageFactory.fromJSON(jsonObject);
+			int msgType = msg.getType();
 			switch (msgType) {
 				case Message.CHAT_MESSAGE:
-					handleChatMessage(jsonObject);
+					handleChatMessage(msg);
 					break;
 
 				case Message.JOIN_CHANNEL:
-					handleJoinChannelMessage(jsonObject);
+					handleJoinChannelMessage((JoinMessage)msg);
 					break;
 
 				default: // Clients cannot send other message types.
@@ -173,24 +175,21 @@ public class ChatServerSession implements Runnable {
 		}
 	}
 
-	private void handleJoinChannelMessage(JSONObject jsonObject) throws IOException {
-		String channel = jsonObject.getString("channel");
-		ChatChannels.getInstance().move(this, channel);
+	private void handleJoinChannelMessage(JoinMessage msg) throws IOException {
+		String channel = msg.getChannel();
+		String topic = msg.getTopic();
+		if (topic == null || topic.length() == 0) {
+			ChatChannels.getInstance().move(this, channel);
+		} else {
+			ChatChannels.getInstance().move(this, channel, topic);
+		}
 	}
 
-	private void handleChatMessage(JSONObject jsonObject) throws IOException {
-		if (state == State.CONNECTED) {
-			String userName = jsonObject.getString("user");
-			String msg = jsonObject.getString("message");
-			String dateStr = jsonObject.getString("sent");
-			OffsetDateTime odt = OffsetDateTime.parse(dateStr);
-			ChatMessage newMessage = new ChatMessage(odt.toLocalDateTime(), userName, msg);
-			if (null != atChannel) {
-				atChannel.relayMessage(this, newMessage);
-			}
+	private void handleChatMessage(Message msg) throws IOException {
+		if (null != atChannel) {
+			atChannel.relayMessage(this, msg);
 		} else {
-			ErrorMessage errorMsg = new ErrorMessage("Not authenticated, register or login first");
-			write(errorMsg);
+			System.out.println("Channel for session is null so cannot relay messages to other sessions");
 		}
 	}
 }

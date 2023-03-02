@@ -20,6 +20,8 @@ public class Channel {
 
 	public Channel(String name) {
 		this.name = name;
+		topic = "No topic on this channel yet";
+		sessions = new ArrayList<>();
 	}
 
 	public String getName() {
@@ -40,12 +42,10 @@ public class Channel {
 
 	public void add(ChatServerSession session) throws IOException {
 		sessions.add(session);
-		session.setChannel(this);
 	}
 
 	public void remove(ChatServerSession session) throws IOException {
 		sessions.remove(session);
-		session.setChannel(null);
 	}
 
 	public boolean hasSessions() {
@@ -81,6 +81,20 @@ public class Channel {
 			}
 			session.close();
 		});
+		sessions.clear();
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Channel: ");
+		builder.append(name);
+		builder.append(" with topic: \"");
+		builder.append(topic);
+		builder.append("\" has ");
+		builder.append(sessions.size());
+		builder.append(" users");
+		return builder.toString();
 	}
 
 }
