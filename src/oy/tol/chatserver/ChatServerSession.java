@@ -13,17 +13,16 @@ import java.time.OffsetDateTime;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import oy.tol.chatserver.messages.ChatMessage;
-import oy.tol.chatserver.messages.ErrorMessage;
-import oy.tol.chatserver.messages.Message;
-import oy.tol.chatserver.messages.StatusMessage;
+import oy.tol.chat.ChatMessage;
+import oy.tol.chat.ErrorMessage;
+import oy.tol.chat.Message;
+import oy.tol.chat.StatusMessage;
 
-public class ChatServerSession extends Thread {
+public class ChatServerSession implements Runnable {
 
 	enum State {
 		UNCONNECTED,
-		CONNECTED,
-		AUTHENTICATED
+		CONNECTED
 	}
 
 	private Socket socket;
@@ -45,6 +44,10 @@ public class ChatServerSession extends Thread {
 
 	public void setChannel(Channel channel) throws IOException {
 		atChannel = channel;
+		if (atChannel != null) {
+			StatusMessage channelChanged = new StatusMessage("Switched to channel " + atChannel.getName());
+			write(channelChanged);
+		}
 	}
 
 	public Channel getChannel() {
@@ -58,15 +61,19 @@ public class ChatServerSession extends Thread {
 		return "";
 	}
 
-	public void close() throws IOException {
-		if (atChannel != null) {
-			atChannel.remove(this);
+	public void close() {
+		try {
+			if (atChannel != null) {
+				atChannel.remove(this);
+			}
+			state = State.UNCONNECTED;
+			running = false;
+			user = null;
+			socket.close();
+			socket = null;	
+		} catch (IOException e) {
+			System.out.println("Closing a session failed: " + e.getLocalizedMessage());
 		}
-		state = State.UNCONNECTED;
-		running = false;
-		user = null;
-		socket.close();
-		socket = null;
 	}
 
 	@Override
@@ -74,18 +81,10 @@ public class ChatServerSession extends Thread {
 		while (running && null != socket) {
 			switch (state) {
 				case UNCONNECTED:				
-					try {
-						close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+					close();
 					break;
 
 				case CONNECTED:
-					read();
-					break;
-
-				case AUTHENTICATED:
 					read();
 					break;
 
@@ -101,12 +100,17 @@ public class ChatServerSession extends Thread {
 
 	private void write(String message) throws IOException {
 		if (state == State.CONNECTED) {
-			out.writeBytes(message + "\n");
+			byte [] msgBytes = message.getBytes(StandardCharsets.UTF_8);
+			byte[] allBytes = new byte[msgBytes.length + 2];
+			ByteBuffer byteBuffer = ByteBuffer.wrap(allBytes, 0, allBytes.length);
+			short msgLen = (short)allBytes.length;
+			byteBuffer = byteBuffer.putShort(msgLen);
+			byteBuffer = byteBuffer.put(msgBytes);
+			out.write(msgBytes);
 		}
 	}
 
 	private void read() {
-
 		// Read data from socket
 		System.out.println("Receiving data...");
 		try {
@@ -136,36 +140,19 @@ public class ChatServerSession extends Thread {
 			e.printStackTrace();
 		} catch (EOFException e) {
 			System.out.println("ChatSession: EOFException");
-			try {
-				close();
-			} catch (Exception f) {
-				e.printStackTrace();
-			}
+			close();
 		} catch (IOException e) {
 			System.out.println("ChatSession: IOException");
-			try {
-				close();
-			} catch (Exception f) {
-				e.printStackTrace();
-			}
+			close();
 		}
 	}
 
 	private void handleMessage(String data) throws SQLException, IOException, JSONException {
-
 		try {
 			JSONObject jsonObject = new JSONObject(data);
 			int msgType = jsonObject.getInt("type");
 
 			switch (msgType) {
-				case Message.REGISTER_MESSAGE:
-					handleRegistrationMessage(jsonObject);
-					break;
-
-				case Message.LOGIN_MESSAGE:
-					handleLoginMessage(jsonObject);
-					break;
-
 				case Message.CHAT_MESSAGE:
 					handleChatMessage(jsonObject);
 					break;
@@ -191,53 +178,18 @@ public class ChatServerSession extends Thread {
 		ChatChannels.getInstance().move(this, channel);
 	}
 
-	private void handleRegistrationMessage(JSONObject jsonObject) throws SQLException, IOException {
-		String userName = jsonObject.getString("userName");
-		String passWord = jsonObject.getString("password");
-		String eMail = jsonObject.getString("email");
-		User user = new User(userName, passWord, eMail);
-		if (ChatDatabase.getInstance().addUser(user)) {
-			// Success, no need to tell anything to client.
-			this.user = user;
-			this.state = State.AUTHENTICATED;
-			if (null != atChannel) {
-				StatusMessage status = new StatusMessage("User " + userName + " joined the server as a new user!");
-				atChannel.relayMessage(this, status);
-			}
-		} else {
-			// Failure
-			ErrorMessage errorMsg = new ErrorMessage("Cannot register this user");
-			write(errorMsg);
-		}
-	}
-
-	private void handleLoginMessage(JSONObject jsonObject) throws IOException {
-		String userName = jsonObject.getString("userName");
-		String passWord = jsonObject.getString("password");
-		if (ChatDatabase.getInstance().isRegisteredUser(userName, passWord)) {
-			this.user = new User(userName, passWord, "");
-			this.state = State.AUTHENTICATED;
-			StatusMessage status = new StatusMessage("User " + userName + " just logged in!");
-			atChannel.relayMessage(this, status);
-		} else {
-			ErrorMessage errorMsg = new ErrorMessage("Cannot login this user");
-			write(errorMsg);
-		}
-	}
-
-	private void handleChatMessage(JSONObject jsonObject) throws SQLException, IOException {
-		if (state == State.AUTHENTICATED) {
+	private void handleChatMessage(JSONObject jsonObject) throws IOException {
+		if (state == State.CONNECTED) {
 			String userName = jsonObject.getString("user");
 			String msg = jsonObject.getString("message");
 			String dateStr = jsonObject.getString("sent");
 			OffsetDateTime odt = OffsetDateTime.parse(dateStr);
 			ChatMessage newMessage = new ChatMessage(odt.toLocalDateTime(), userName, msg);
-			ChatDatabase.getInstance().insertMessage(userName, newMessage);
 			if (null != atChannel) {
 				atChannel.relayMessage(this, newMessage);
 			}
 		} else {
-			ErrorMessage errorMsg = new ErrorMessage("Not authenticate, register or login first");
+			ErrorMessage errorMsg = new ErrorMessage("Not authenticated, register or login first");
 			write(errorMsg);
 		}
 	}

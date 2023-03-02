@@ -4,8 +4,6 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
-import javax.swing.JComboBox;
-
 import org.json.JSONObject;
 
 public class ChatMessage extends Message {

@@ -13,11 +13,7 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 import javax.net.ServerSocketFactory;
@@ -29,10 +25,9 @@ import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 
-public class ChatSocketServer implements Runnable{
+public class ChatSocketServer implements Runnable {
 
 	private boolean running = true;
-	private String dbFile = "O4-chat.db";
 	private int serverPort = 10000;
 	private boolean useSSL = false;
 	private String certificateFile = "keystore.jks";
@@ -71,9 +66,6 @@ public class ChatSocketServer implements Runnable{
 	@Override
 	public void run() {
 		try {
-			log("Initializing database...");
-			ChatDatabase database = ChatDatabase.getInstance();
-			database.open(dbFile);
 			log("Initializing ChatServer...");
 			ServerSocket serverSocket;
 			if (useSSL) {
@@ -91,14 +83,12 @@ public class ChatSocketServer implements Runnable{
 				ChatServerSession newSession = new ChatServerSession(clientSocket, ++sessionCount);
 				channels.add(newSession);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
 		} catch (KeyStoreException | NoSuchAlgorithmException | CertificateException | IOException
 				| UnrecoverableKeyException | KeyManagementException e) {
 			log("Something wrong with the certificate!", ANSI_RED);
 			e.printStackTrace();
 		} finally {
-			ChatDatabase.getInstance().close();
+			channels.closeAll("Server is shutting down, bye all!");
 		}
 		log("Server finished, bye!");
 	}
@@ -148,17 +138,10 @@ public class ChatSocketServer implements Runnable{
 		config.load(istream);
 		serverPort = Integer.valueOf(config.getProperty("port", "10000"));
 		useSSL = config.getProperty("usessl", "false").equals("true");
-		dbFile = config.getProperty("database");
 		certificateFile = config.getProperty("certfile");
 		istream.close();
-		if (dbFile == null ||
-				certificateFile == null) {
-			throw new RuntimeException("ChatServer Properties file does not have properties set.");
-		} else {
-			log("Server port: " + serverPort, ANSI_YELLOW);
-			log("Database file: " + dbFile, ANSI_YELLOW);
-			log("Using SSL: " + (useSSL ? "true" : "false"), ANSI_YELLOW);
-			log("Certificate file: " + certificateFile, ANSI_YELLOW);
-		}
+		log("Server port: " + serverPort, ANSI_YELLOW);
+		log("Using SSL: " + (useSSL ? "true" : "false"), ANSI_YELLOW);
+		log("Certificate file: " + certificateFile, ANSI_YELLOW);
 	}
 }

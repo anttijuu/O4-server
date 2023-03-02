@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import oy.tol.chatserver.messages.Message;
+import oy.tol.chat.Message;
+import oy.tol.chat.StatusMessage;
 
 public class Channel {
 	private String name = "";
@@ -13,7 +14,7 @@ public class Channel {
 
 	public Channel() {
 		name = "main";
-		topic = "Everything about the universe and more you could ever dream of.";
+		topic = "Everything about the universe and more you could ever dream of";
 		sessions = new ArrayList<>();
 	}
 
@@ -48,7 +49,7 @@ public class Channel {
 	}
 
 	public boolean hasSessions() {
-		return sessions.size() > 0;
+		return !sessions.isEmpty();
 	}
 
 	public int sessionCount() {
@@ -63,8 +64,23 @@ public class Channel {
 				}
 			} catch (IOException e) {
 				// Log error
+				System.out.println("Could not write to session, closing it: " + e.getLocalizedMessage());
+				sessions.remove(session);
+				session.close();
 			}
 		});	
+	}
+
+	public void closeAllSessions(String message) {
+		StatusMessage msg = new StatusMessage(message);
+		sessions.forEach( session -> {			
+			try {
+				session.write(msg);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			session.close();
+		});
 	}
 
 }

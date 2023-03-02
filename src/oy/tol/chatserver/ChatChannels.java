@@ -10,7 +10,7 @@ public class ChatChannels {
 
 	private static ChatChannels instance = null;
 	
-	public static ChatChannels getInstance() {
+	public static synchronized ChatChannels getInstance() {
 		if (null == instance) {
 			return new ChatChannels();
 		}
@@ -23,12 +23,12 @@ public class ChatChannels {
 		channels.put(main.getName(), main);
 	}
 
-	public void add(ChatServerSession newSession) throws IOException {
+	public synchronized void add(ChatServerSession newSession) throws IOException {
 		Channel main = channels.get("main");
 		main.add(newSession);
 	}
 
-	public void add(ChatServerSession newSession, String toChannel) throws IOException {
+	public synchronized void add(ChatServerSession newSession, String toChannel) throws IOException {
 		Channel channel = channels.get(toChannel);
 		if (null != channel) {
 			channel.add(newSession);
@@ -39,14 +39,14 @@ public class ChatChannels {
 		}
 	}
 
-	public void remove(ChatServerSession session) throws IOException {
+	public synchronized void remove(ChatServerSession session) throws IOException {
 		Channel channel = session.getChannel();
 		if (null != channel) {
 			channel.remove(session);
 		}
 	}
 
-	public void removeAndClose(ChatServerSession session) throws IOException {
+	public synchronized void removeAndClose(ChatServerSession session) throws IOException {
 		Channel channel = session.getChannel();
 		if (null != channel) {
 			channel.remove(session);
@@ -54,8 +54,14 @@ public class ChatChannels {
 		}
 	}
 
-	public void move(ChatServerSession session, String toChannel) throws IOException {
+	public synchronized void move(ChatServerSession session, String toChannel) throws IOException {
 		remove(session);
 		add(session, toChannel);
+	}
+
+	public synchronized void closeAll(String message) {
+		channels.forEach( (name, channel) -> {
+			channel.closeAllSessions(message);
+		});
 	}
 }
