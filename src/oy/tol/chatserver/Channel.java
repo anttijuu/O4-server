@@ -1,6 +1,5 @@
 package oy.tol.chatserver;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class Channel {
 
 	public Channel(String name) {
 		this.name = name;
-		topic = "No topic on this channel yet";
+		topic = "No topic";
 		sessions = new ArrayList<>();
 	}
 
@@ -38,13 +37,15 @@ public class Channel {
 
 	public void setTopic(String topic) {
 		this.topic = topic;
+		StatusMessage topicChanged = new StatusMessage("Channel topic changed to " + topic);
+		relayMessage(null, topicChanged);
 	}
 
-	public void add(ChatServerSession session) throws IOException {
+	public void add(ChatServerSession session) {
 		sessions.add(session);
 	}
 
-	public void remove(ChatServerSession session) throws IOException {
+	public void remove(ChatServerSession session) {
 		sessions.remove(session);
 	}
 
@@ -58,15 +59,8 @@ public class Channel {
 
 	public void relayMessage(ChatServerSession fromSession, Message message) {
 		sessions.forEach( session -> {
-			try {
-				if (session != fromSession) {
-					session.write(message);
-				}
-			} catch (IOException e) {
-				// Log error
-				System.out.println("Could not write to session, closing it: " + e.getLocalizedMessage());
-				sessions.remove(session);
-				session.close();
+			if (session != fromSession) {
+				session.write(message);
 			}
 		});	
 	}
@@ -74,11 +68,7 @@ public class Channel {
 	public void closeAllSessions(String message) {
 		StatusMessage msg = new StatusMessage(message);
 		sessions.forEach( session -> {			
-			try {
-				session.write(msg);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			session.write(msg);
 			session.close();
 		});
 		sessions.clear();

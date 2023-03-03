@@ -47,6 +47,8 @@ public class ChatSocketServer implements Runnable {
 				String input = console.readLine();
 				if (input.equalsIgnoreCase("/quit")) {
 					server.close();
+				} else if (input.equalsIgnoreCase("/status")) {
+					System.out.println(server.channels);
 				}
 			}
 		} catch (IOException e) {

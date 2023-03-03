@@ -1,6 +1,5 @@
 package oy.tol.chatserver;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,14 +22,14 @@ public class ChatChannels {
 		channels.put(main.getName(), main);
 	}
 
-	public synchronized void add(ChatServerSession newSession) throws IOException {
+	public synchronized void add(ChatServerSession newSession) {
 		Channel main = channels.get("main");
 		main.add(newSession);
 		newSession.setChannel(main);
 		System.out.println(this);
 	}
 
-	public synchronized void add(ChatServerSession newSession, String toChannel) throws IOException {
+	public synchronized void add(ChatServerSession newSession, String toChannel) {
 		Channel channel = channels.get(toChannel);
 		if (null != channel) {
 			channel.add(newSession);
@@ -44,7 +43,7 @@ public class ChatChannels {
 		System.out.println(this);
 	}
 
-	public synchronized void add(ChatServerSession newSession, String toChannel, String topic) throws IOException {
+	public synchronized void add(ChatServerSession newSession, String toChannel, String topic) {
 		add(newSession, toChannel);
 		Channel channel = channels.get(toChannel);
 		channel.setTopic(topic);
@@ -52,7 +51,7 @@ public class ChatChannels {
 	}
 
 
-	public synchronized void remove(ChatServerSession session) throws IOException {
+	public synchronized void remove(ChatServerSession session) {
 		Channel channel = session.getChannel();
 		if (null != channel) {
 			channel.remove(session);
@@ -60,7 +59,7 @@ public class ChatChannels {
 		}
 	}
 
-	public synchronized void removeAndClose(ChatServerSession session) throws IOException {
+	public synchronized void removeAndClose(ChatServerSession session) {
 		Channel channel = session.getChannel();
 		if (null != channel) {
 			channel.remove(session);
@@ -70,15 +69,20 @@ public class ChatChannels {
 		System.out.println(this);
 	}
 
-	public synchronized void move(ChatServerSession session, String toChannel) throws IOException {
+	public synchronized void move(ChatServerSession session, String toChannel) {
+		if (session.getChannel().getName().equals(toChannel)) {
+			return;
+		}
 		remove(session);
 		add(session, toChannel);
 		System.out.println(this);
 	}
 
-	public synchronized void move(ChatServerSession session, String toChannel, String topic) throws IOException {
-		remove(session);
-		add(session, toChannel, topic);
+	public synchronized void changeTopic(ChatServerSession session, String topic) {
+		Channel channel = session.getChannel();
+		if (null != channel) {
+			channel.setTopic(topic);
+		}
 	}
 
 	public synchronized void closeAll(String message) {
@@ -90,7 +94,7 @@ public class ChatChannels {
 	@Override 
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Server has ");
+		builder.append("---------------------\nServer has ");
 		builder.append(channels.size());
 		builder.append(" channels currently:\n");
 		channels.forEach( (name, channel) -> {

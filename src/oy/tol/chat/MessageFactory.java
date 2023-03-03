@@ -30,19 +30,18 @@ public class MessageFactory {
 
 			case Message.JOIN_CHANNEL: {
 				String channel = jsonObject.getString("channel");
-				String topic = jsonObject.getString("message");
-				message = new JoinMessage(channel, topic);
+				message = new JoinMessage(channel);
 				break; 
 			}
 
 			case Message.STATUS_MESSAGE: { 
-				String msg = jsonObject.getString("message");
+				String msg = jsonObject.getString("status");
 				message = new StatusMessage(msg);
 				break; 
 			}
 
 			case Message.ERROR_MESSAGE: { 
-				String msg = jsonObject.getString("message");
+				String msg = jsonObject.getString("error");
 				message = new ErrorMessage(msg);
 				break; 
 			}

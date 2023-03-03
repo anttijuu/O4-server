@@ -1,18 +1,18 @@
 package oy.tol.chatserver;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
-import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
-import java.sql.SQLException;
-import java.util.Arrays;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import oy.tol.chat.ChangeTopicMessage;
 import oy.tol.chat.ErrorMessage;
 import oy.tol.chat.JoinMessage;
 import oy.tol.chat.Message;
@@ -29,8 +29,8 @@ public class ChatServerSession implements Runnable {
 	private Socket socket;
 	private User user;
 	private State state = State.UNCONNECTED;
-	private DataOutputStream out;
-	private DataInputStream inStream;
+	private PrintWriter out;
+	private BufferedReader in;
 	private int sessionID;
 	private boolean running = true;
 
@@ -40,16 +40,20 @@ public class ChatServerSession implements Runnable {
 		this.socket = socket;
 		this.sessionID = sessionID;
 		state = socket.isConnected() ? State.CONNECTED : State.UNCONNECTED;
-		out = new DataOutputStream(socket.getOutputStream());
-		inStream = new DataInputStream(socket.getInputStream());
+		out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8), true);
+		in = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
 		new Thread(this).start();
 	}
 
-	public void setChannel(Channel channel) throws IOException {
+	public void setChannel(Channel channel) {
+		if (null != atChannel) {
+			StatusMessage leaving = new StatusMessage("User " + userName() + " is leaving the channel");
+			write(leaving);
+		}
 		atChannel = channel;
 		if (atChannel != null) {
-			StatusMessage channelChanged = new StatusMessage("Switched to channel " + atChannel.getName());
-			write(channelChanged);
+			StatusMessage arriving = new StatusMessage("User " + userName() + " joined the channel");
+			write(arriving);
 		}
 	}
 
@@ -66,90 +70,58 @@ public class ChatServerSession implements Runnable {
 
 	public void close() {
 		try {
+			System.out.println("Closing a server side session with client");
 			if (atChannel != null) {
 				atChannel.remove(this);
 			}
 			state = State.UNCONNECTED;
 			running = false;
 			user = null;
+			in.close();
+			out.close();
 			socket.close();
-			socket = null;	
 		} catch (IOException e) {
 			System.out.println("Closing a session failed: " + e.getLocalizedMessage());
+		} finally {
+			socket = null;
 		}
 	}
 
 	@Override
 	public void run() {
+		System.out.println("ServerSession thread started");
 		while (running && null != socket) {
-			switch (state) {
-				case UNCONNECTED:				
-					close();
-					break;
-
-				case CONNECTED:
-					read();
-					break;
-
-				default:
-					break;
+			// Read data from socket
+			System.out.println("Receiving data...");
+			try {
+				String data = "";
+				while ((data = in.readLine()) != null) {
+					handleMessage(data);
+				}
+			} catch (EOFException e) {
+				System.out.println("ChatSession: EOFException");
+			} catch (IOException e) {
+				System.out.println("ChatSession: IOException");
+			} finally {
+				close();
 			}
 		}
+		System.out.println("ServerSession run loop finished");
 	}
 
-	public void write(Message msg) throws IOException {
+	public void write(Message msg) {
 		write(msg.toJSON());
 	}
 
-	private void write(String message) throws IOException {
+	private void write(String message) {
 		if (state == State.CONNECTED) {
-			// System.out.println("Writing to client: " + message);
-			byte [] msgBytes = message.getBytes(StandardCharsets.UTF_8);
-			// System.out.println(" " + Arrays.toString(msgBytes));
-			byte[] allBytes = new byte[msgBytes.length + 2];
-			ByteBuffer byteBuffer = ByteBuffer.wrap(allBytes, 0, allBytes.length);
-			short msgLen = (short)msgBytes.length;
-			// System.out.println("Byte count: " + msgLen);
-			byteBuffer = byteBuffer.putShort(msgLen);
-			byteBuffer = byteBuffer.put(msgBytes);
-			// System.out.println(" " + Arrays.toString(allBytes));
-			out.write(allBytes);
+			System.out.println("DEBUG OUT: " + message);
+			out.write(message + "\n");
 		}
 	}
 
-	private void read() {
-		// Read data from socket
-		// System.out.println("Receiving data...");
-		try {
-			String data = "";
-			byte[] sizeBytes = new byte[2];
-			sizeBytes[0] = inStream.readByte();
-			sizeBytes[1] = inStream.readByte();
-			ByteBuffer byteBuffer = ByteBuffer.wrap(sizeBytes, 0, 2);
-			int bytesToRead = byteBuffer.getShort();
-			// System.out.println(sessionID + ": Reading " + bytesToRead + " bytes...");
-
-			if (bytesToRead > 0) {
-				int bytesRead = 0;
-				byte [] messageBytes = new byte[bytesToRead];
-				int read = inStream.read(messageBytes, 0, bytesToRead);
-				// System.out.println("Actually read: " + read + " bytes");
-				data = new String(messageBytes, 0, bytesToRead, StandardCharsets.UTF_8);
-				// System.out.println("Received: " + data);
-				handleMessage(data);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (EOFException e) {
-			System.out.println("ChatSession: EOFException");
-			close();
-		} catch (IOException e) {
-			System.out.println("ChatSession: IOException");
-			close();
-		}
-	}
-
-	private void handleMessage(String data) throws SQLException, IOException, JSONException {
+	private void handleMessage(String data) throws IOException {
+		System.out.println("DEBUG IN: " + data);
 		try {
 			JSONObject jsonObject = new JSONObject(data);
 			Message msg = MessageFactory.fromJSON(jsonObject);
@@ -160,7 +132,11 @@ public class ChatServerSession implements Runnable {
 					break;
 
 				case Message.JOIN_CHANNEL:
-					handleJoinChannelMessage((JoinMessage)msg);
+					handleJoinChannelMessage((JoinMessage) msg);
+					break;
+
+				case Message.CHANGE_TOPIC:
+					handleChangeChannelTopicMessage((ChangeTopicMessage) msg);
 					break;
 
 				default: // Clients cannot send other message types.
@@ -175,17 +151,19 @@ public class ChatServerSession implements Runnable {
 		}
 	}
 
-	private void handleJoinChannelMessage(JoinMessage msg) throws IOException {
-		String channel = msg.getChannel();
-		String topic = msg.getTopic();
-		if (topic == null || topic.length() == 0) {
-			ChatChannels.getInstance().move(this, channel);
-		} else {
-			ChatChannels.getInstance().move(this, channel, topic);
-		}
+	private void handleChangeChannelTopicMessage(ChangeTopicMessage msg) {
+		String newTopic = msg.getTopic();
+		System.out.println("Received topic change msg to " + newTopic);
+		ChatChannels.getInstance().changeTopic(this, newTopic);
 	}
 
-	private void handleChatMessage(Message msg) throws IOException {
+	private void handleJoinChannelMessage(JoinMessage msg) {
+		String channel = msg.getChannel();
+		System.out.println("Received channel change msg to " + channel);
+		ChatChannels.getInstance().move(this, channel);
+	}
+
+	private void handleChatMessage(Message msg) {
 		if (null != atChannel) {
 			atChannel.relayMessage(this, msg);
 		} else {
