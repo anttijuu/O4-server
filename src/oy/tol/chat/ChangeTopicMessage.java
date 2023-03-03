@@ -6,8 +6,9 @@ public class ChangeTopicMessage extends Message {
 
 	private String topic;
 
-	public ChangeTopicMessage() {
+	public ChangeTopicMessage(String topic) {
 		super(Message.CHANGE_TOPIC);
+		this.topic = topic;
 	}
 
 	public String getTopic() {

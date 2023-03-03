@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,6 +16,7 @@ import org.json.JSONObject;
 import oy.tol.chat.ChangeTopicMessage;
 import oy.tol.chat.ErrorMessage;
 import oy.tol.chat.JoinMessage;
+import oy.tol.chat.ListChannelsMessage;
 import oy.tol.chat.Message;
 import oy.tol.chat.MessageFactory;
 import oy.tol.chat.StatusMessage;
@@ -47,12 +49,12 @@ public class ChatServerSession implements Runnable {
 
 	public void setChannel(Channel channel) {
 		if (null != atChannel) {
-			StatusMessage leaving = new StatusMessage("User " + userName() + " is leaving the channel");
+			StatusMessage leaving = new StatusMessage("You left the channel " + atChannel.getName());
 			write(leaving);
 		}
 		atChannel = channel;
 		if (atChannel != null) {
-			StatusMessage arriving = new StatusMessage("User " + userName() + " joined the channel");
+			StatusMessage arriving = new StatusMessage("You joined the channel " + atChannel.getName());
 			write(arriving);
 		}
 	}
@@ -71,11 +73,11 @@ public class ChatServerSession implements Runnable {
 	public void close() {
 		try {
 			System.out.println("Closing a server side session with client");
+			running = false;
 			if (atChannel != null) {
 				atChannel.remove(this);
 			}
 			state = State.UNCONNECTED;
-			running = false;
 			user = null;
 			in.close();
 			out.close();
@@ -94,7 +96,7 @@ public class ChatServerSession implements Runnable {
 			// Read data from socket
 			System.out.println("Receiving data...");
 			try {
-				String data = "";
+				String data;
 				while ((data = in.readLine()) != null) {
 					handleMessage(data);
 				}
@@ -104,6 +106,7 @@ public class ChatServerSession implements Runnable {
 				System.out.println("ChatSession: IOException");
 			} finally {
 				close();
+				System.out.println("In session finally...");
 			}
 		}
 		System.out.println("ServerSession run loop finished");
@@ -117,6 +120,7 @@ public class ChatServerSession implements Runnable {
 		if (state == State.CONNECTED) {
 			System.out.println("DEBUG OUT: " + message);
 			out.write(message + "\n");
+			out.flush();
 		}
 	}
 
@@ -125,6 +129,11 @@ public class ChatServerSession implements Runnable {
 		try {
 			JSONObject jsonObject = new JSONObject(data);
 			Message msg = MessageFactory.fromJSON(jsonObject);
+			if (null == msg) {
+				ErrorMessage error = new ErrorMessage("Unknown message type from client");
+				write(error);
+				return;
+			}
 			int msgType = msg.getType();
 			switch (msgType) {
 				case Message.CHAT_MESSAGE:
@@ -133,6 +142,10 @@ public class ChatServerSession implements Runnable {
 
 				case Message.JOIN_CHANNEL:
 					handleJoinChannelMessage((JoinMessage) msg);
+					break;
+
+				case Message.LIST_CHANNELS: 
+					handleListChannelsMessage((ListChannelsMessage)msg);
 					break;
 
 				case Message.CHANGE_TOPIC:
@@ -149,6 +162,15 @@ public class ChatServerSession implements Runnable {
 			ErrorMessage errorMsg = new ErrorMessage("Invalid JSON message from client");
 			write(errorMsg);
 		}
+	}
+
+	private void handleListChannelsMessage(ListChannelsMessage msg) {
+		List<String> channelNames = ChatChannels.getInstance().listChannels();
+		ListChannelsMessage listMessage = new ListChannelsMessage();
+		for (String name : channelNames) {
+			listMessage.addChannel(name);
+		}
+		write(listMessage);
 	}
 
 	private void handleChangeChannelTopicMessage(ChangeTopicMessage msg) {

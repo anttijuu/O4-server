@@ -1,6 +1,8 @@
 package oy.tol.chatserver;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ChatChannels {
@@ -11,7 +13,7 @@ public class ChatChannels {
 	
 	public static synchronized ChatChannels getInstance() {
 		if (null == instance) {
-			return new ChatChannels();
+			instance = new ChatChannels();
 		}
 		return instance;
 	}
@@ -56,6 +58,10 @@ public class ChatChannels {
 		if (null != channel) {
 			channel.remove(session);
 			session.setChannel(null);
+			if (!channel.hasSessions() && !channel.getName().equals("main")) {
+				channels.remove(channel.getName());
+				System.out.println("Last user left from channel so it was closed");
+			}
 		}
 	}
 
@@ -65,15 +71,21 @@ public class ChatChannels {
 			channel.remove(session);
 			session.setChannel(null);
 			session.close();
+			if (!channel.hasSessions() && !channel.getName().equals("main")) {
+				channels.remove(channel.getName());
+				System.out.println("Last user left from channel so it was closed");
+			}
 		}
 		System.out.println(this);
 	}
 
 	public synchronized void move(ChatServerSession session, String toChannel) {
-		if (session.getChannel().getName().equals(toChannel)) {
-			return;
+		if (session.getChannel() != null) {
+			if (session.getChannel().getName().equals(toChannel)) {
+				return;
+			}
+			remove(session);
 		}
-		remove(session);
 		add(session, toChannel);
 		System.out.println(this);
 	}
@@ -83,6 +95,14 @@ public class ChatChannels {
 		if (null != channel) {
 			channel.setTopic(topic);
 		}
+	}
+
+	public synchronized List<String> listChannels() {
+		List<String> channelNames = new ArrayList<>();
+		channels.forEach( (name, channel) -> {
+			channelNames.add(name + " (" + channel.sessionCount() + ")");
+		});
+		return channelNames;
 	}
 
 	public synchronized void closeAll(String message) {

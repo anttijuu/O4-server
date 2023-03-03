@@ -36,8 +36,8 @@ public class ChatSocketServer implements Runnable {
 	public static void main(String[] args) {
 		try {
 			System.out.println("Launching ChatServer...");
-			if (args.length != 2) {
-				System.out.println("Usage java -jar jar-file.jar config.properties certpassword");
+			if (args.length != 1) {
+				System.out.println("Usage java -jar jar-file.jar config.properties");
 				return;
 			}
 			server = new ChatSocketServer(args);
@@ -51,7 +51,7 @@ public class ChatSocketServer implements Runnable {
 					System.out.println(server.channels);
 				}
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -59,7 +59,6 @@ public class ChatSocketServer implements Runnable {
 	private ChatSocketServer(String [] args) throws FileNotFoundException, IOException {
 		log("Reading configuration...");
 		readConfiguration(args[0]);
-		certificatePassword = args[1];
 	}
 
 	@Override
@@ -76,17 +75,20 @@ public class ChatSocketServer implements Runnable {
 			}
 			channels = ChatChannels.getInstance();
 			while (running) {
-				int sessionCount = 0;
-				Socket clientSocket = serverSocket.accept();
-				ChatServerSession newSession = new ChatServerSession(clientSocket, ++sessionCount);
-				channels.add(newSession);
+				try {
+					int sessionCount = 0;
+					Socket clientSocket = serverSocket.accept();
+					ChatServerSession newSession = new ChatServerSession(clientSocket, ++sessionCount);
+					channels.add(newSession);						
+				} catch (IOException e) {
+					System.out.println("IOException when creating a ChatServerSession " + e.getLocalizedMessage());
+				}
 			}
-		} catch (KeyStoreException | NoSuchAlgorithmException | CertificateException | IOException
-				| UnrecoverableKeyException | KeyManagementException e) {
-			log("Something wrong with the certificate!", ANSI_RED);
+		} catch (Exception e) {
+			log("Something wrong !" + e.getLocalizedMessage(), ANSI_RED);
 			e.printStackTrace();
 		} finally {
-			channels.closeAll("Server is shutting down, bye all!");
+			channels.closeAll("Server is finally shutting down, bye all!");
 		}
 		log("Server finished, bye!");
 	}

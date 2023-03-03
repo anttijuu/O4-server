@@ -2,6 +2,7 @@ package oy.tol.chat;
 
 import java.util.UUID;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class MessageFactory {
@@ -32,6 +33,24 @@ public class MessageFactory {
 				String channel = jsonObject.getString("channel");
 				message = new JoinMessage(channel);
 				break; 
+			}
+
+			case Message.LIST_CHANNELS: {
+				message = new ListChannelsMessage();
+				if (jsonObject.has("channels")) {
+					JSONArray channels = jsonObject.getJSONArray("channels");
+					for (int index = 0; index < channels.length(); index++) {
+						String channel = channels.getString(index);
+						((ListChannelsMessage)message).addChannel(channel);
+					}	
+				}
+				break;
+			}
+
+			case Message.CHANGE_TOPIC: {
+				String topic = jsonObject.getString("topic");
+				message = new ChangeTopicMessage(topic);
+				break;
 			}
 
 			case Message.STATUS_MESSAGE: { 
