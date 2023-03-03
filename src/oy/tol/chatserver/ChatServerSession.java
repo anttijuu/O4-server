@@ -79,13 +79,15 @@ public class ChatServerSession implements Runnable {
 			}
 			state = State.UNCONNECTED;
 			user = null;
-			in.close();
-			out.close();
-			socket.close();
+			if (null != socket) socket.close();
+			if (null != in) in.close();
+			if (null != out) out.close();
 		} catch (IOException e) {
-			System.out.println("Closing a session failed: " + e.getLocalizedMessage());
+			System.out.println("Closing a session: " + e.getLocalizedMessage());
 		} finally {
 			socket = null;
+			in = null;
+			out = null;
 		}
 	}
 

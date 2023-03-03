@@ -61,7 +61,8 @@ public class MessageFactory {
 
 			case Message.ERROR_MESSAGE: { 
 				String msg = jsonObject.getString("error");
-				message = new ErrorMessage(msg);
+				int requiresClientShutdown = jsonObject.getInt("clientshutdown");
+				message = new ErrorMessage(msg, requiresClientShutdown != 0 ? true : false);
 				break; 
 			}
 		}

@@ -3,6 +3,7 @@ package oy.tol.chatserver;
 import java.util.ArrayList;
 import java.util.List;
 
+import oy.tol.chat.ErrorMessage;
 import oy.tol.chat.Message;
 import oy.tol.chat.StatusMessage;
 
@@ -66,9 +67,10 @@ public class Channel {
 	}
 
 	public void closeAllSessions(String message) {
-		StatusMessage msg = new StatusMessage(message);
+		ErrorMessage msg = new ErrorMessage(message, true);
 		sessions.forEach( session -> {			
 			session.write(msg);
+			session.setChannel(null);
 			session.close();
 		});
 		sessions.clear();
