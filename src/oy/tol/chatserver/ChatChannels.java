@@ -124,4 +124,12 @@ public class ChatChannels {
 		builder.append("---------------------\n");
 		return builder.toString();
 	}
+
+	public void createBotChannel(String botChannelName) {
+		Channel channel = channels.get(botChannelName);
+		if (null == channel) {
+			Channel newChannel = new BotChannel(botChannelName);
+			channels.put(botChannelName, newChannel);
+		}
+	}
 }
