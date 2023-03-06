@@ -11,16 +11,18 @@ public class Channel {
 	private String name = "";
 	private String topic = "";
 	private List<ChatServerSession> sessions;
-
-	public Channel() {
-		name = "main";
-		topic = "Everything about the universe and more you could ever dream of";
-		sessions = new ArrayList<>();
-	}
+	private boolean isPermanent = false;
 
 	public Channel(String name) {
 		this.name = name;
 		topic = "No topic";
+		sessions = new ArrayList<>();
+	}
+
+	public Channel(String name, boolean isPermanent) {
+		this.name = name;
+		topic = "No topic";
+		this.isPermanent = isPermanent;
 		sessions = new ArrayList<>();
 	}
 
@@ -42,6 +44,10 @@ public class Channel {
 		relayMessage(null, topicChanged);
 	}
 
+	public boolean isPermanent() {
+		return isPermanent;
+	}
+	
 	public void add(ChatServerSession session) {
 		sessions.add(session);
 	}

@@ -16,7 +16,7 @@ public class BotChannel extends Channel {
 	
 	private boolean botActive = false;
 	private Timer timer;
-	private static final int MIN_TIMER_GAP_MS = 1000;
+	private static final int MIN_TIMER_GAP_MS = 1500;
 	private static final int MAX_TIMER_GAP_MS = 5000;
 	private List<String> messageStrings;
 	private int messageIndex = 0;
@@ -36,7 +36,7 @@ public class BotChannel extends Channel {
 	}
 
 	public BotChannel(String name) {
-		super(name);
+		super(name, true);
 	}
 
 	@Override

@@ -2,17 +2,22 @@ atene:nyt, ystäväni, on sinun astuttava viisaan nestorin eteen
 atene:olet lähtenyt matkaan saadaksesi tietoja isästäsi
 atene:nestor on sanova totuuden ja kertova sinulle, mitä hän isästäsi tietää
 telemakos:mentor, miten uskallan häntä lähestyä
-telemakos:en ole oppinut vielä puhumisen suurta taitoa ja onhan sopimatonta, että nuorempi kyselee vanhemmalta
+telemakos:en ole oppinut vielä puhumisen suurta taitoa ja onhan sopimatonta,...
+telemakos:...että nuorempi kyselee vanhemmalta
 atene:sinun on itse mietittävä alkusanat, kyllä jumalat sitten sinua auttavat eteenpäin
-atene:suuri poseidon, kuule pyyntöni, suo nestorin ja hänen poikansa menestyä ja palkitse muille pylon miehille heidän uhrinsa
+atene:suuri poseidon, kuule pyyntöni, suo nestorin ja hänen poikansa menestyä ja palkitse
+atene:muille pylon miehille heidän uhrinsa
 atene:meitäkin auta, meille suotuisa kotimatka suo ja asiamme toimitetuksi saata
-nestor:nyt saanemme kuulla, millä matkoilla vieraamme ovat, mistä tulette, mihin menette ja mitä asioita ajatte?
+nestor:nyt saanemme kuulla, millä matkoilla vieraamme ovat, mistä tulette,...
+nestor:mihin menette ja mitä asioita ajatte?
 telemakos:nestor, neleun poika, kreikkalaisten ylpeys! 
 telemakos:tulemme itakasta ja matkamme määrä on täällä 
-telemakos:tulimme kuulemaan, mitä tiedät odysseusta, isästäni, tuosta kovia kokeneesta miehestä, joka ennen taisteli rinnallasi troiassa 
+telemakos:tulimme kuulemaan, mitä tiedät odysseusta, isästäni, tuosta kovia kokeneesta...
+telemakos:miehestä, joka ennen taisteli rinnallasi troiassa 
 telemakos:kaikista muista uroista tiedetään jotain
 telemakos:ken on onnellisesti kotiinsa saapunut, kenet on kuolema kohdannut 
-telemakos:isästäni vain ei tiedetä, onko hän vihollisen kädestä surmansa saanut, vai merikö hänet on saaliikseen vienyt 
+telemakos:isästäni vain ei tiedetä, onko hän vihollisen kädestä surmansa saanut,...
+telemakos:vai merikö hänet on saaliikseen vienyt 
 telemakos:pyydämme sinua, sano, mitä tiedät
 telemakos:näitkö omin silmin hänen kuolemansa vai oletko huhuna siitä tietoa saanut? 
 telemakos:säälimättä kerro, jos kovakin on kohtalonsa ollut
@@ -24,25 +29,31 @@ nestor:ken voi kertoa kärsimämme vaivat?
 nestor:jos vuosia luonani viipyisit, väsyisit, ennenkuin kertomukseni niistä loppuisivat 
 nestor:yhdeksän pitkää vuotta kesti sota, kunnes sen vihdoin zeus saattoi loppuun 
 nestor:kekseliäisyydessä ja viekkaudessa ei ollut toista jalon odysseun vertaista 
-nestor:eikä ole epäilystäkään siitä, ettet sinä olisi odysseun poika, muotosi, yksinpä puheesikin sen todistaa 
+nestor:eikä ole epäilystäkään siitä, ettet sinä olisi odysseun poika, muotosi, yksinpä..
+nestor:puheesikin sen todistaa 
 nestor:harvoin lapsi niin vanhempaansa muistuttaa
 nestor:läpi elämän olimme ystäviä, aina yksimielisiä sekä ruhtinaitten kokouksissa että kansan keskellä 
 nestor:mutta kerronpa sinulle mitä tiedän
-nestor:kun sota oli loppunut, syntyi kreikkalaisten kesken riita siitä, oliko jo lähdettävä vai oliko ensin uhrattava jumalille 
+nestor:kun sota oli loppunut, syntyi kreikkalaisten kesken riita siitä, oliko jo lähdettävä vai
+nestor:oliko ensin uhrattava jumalille 
 nestor:puolet joukosta lähti kotimatkalle, niiden joukossa meidän laivamme sekä odysseun
 nestor:alkutaival sujui hyvin 
-nestor:jumalat soivat tyynen matkan, mutta silloin puhkesi taas keskinäinen riita, ja nyt kääntyi odysseus takaisin uhraamaan jumalille 
-nestor:vihdoin pääsin onnellisesti kotirantaan, samoin saapuivat akilleun joukot hänen rohkean poikansa johtamina
+nestor:jumalat soivat tyynen matkan, mutta silloin puhkesi taas keskinäinen riita, ja nyt 
+nestor:kääntyi odysseus takaisin uhraamaan jumalille 
+nestor:vihdoin pääsin onnellisesti kotirantaan, samoin saapuivat akilleun joukot 
+nestor:hänen rohkean poikansa johtamina
 nestor:ja urhean filokteteen sekä monien muiden urhojen laivat 
 nestor:agamemnonin loppu oli surullinen 
 nestor:kavala aigistos hänet murhasi 
 nestor:mutta jäihän agamemnonilta poika, orestes, joka kuninkaanmurhaajalle kosti 
-nestor:niin sinäkin, poikani, nuori ja kaunis, näytä olevasi voimakas, silloin on kansasi sinua kunnioittava
+nestor:niin sinäkin, poikani, nuori ja kaunis, näytä olevasi voimakas, silloin...
+nestor:on kansasi sinua kunnioittava
 telemakos:orestes teki urostyön ja on siitä kreikassa aina ylistys kaikuva
 telemakos:kunhan jumalat soisivat minullekin sellaisen voiman, kostaisin kosijoille heidän julkeutensa
 nestor:mainitsit kosijat, olen kuullut, että he majailevat kodissasi vasten tahtoasi 
 nestor:mutta ken tietää, ehkäpä isäsi kerran palaa ja kaiken kostaa 
-nestor:jospa atene osoittaisi sinulle samaa rakkautta, mitä hän aikanaan isällesi osoitti, toimittaisi hän varmasti kosijoille muuta ajateltavaa
+nestor:jospa atene osoittaisi sinulle samaa rakkautta, mitä hän aikanaan isällesi osoitti,...
+nestor:toimittaisi hän varmasti kosijoille muuta ajateltavaa
 telemakos:liian paljon toivotat minulle, kuuluisa nestor, liian paljon, jotta se koskaan voisi toteutua
 atene:ystäväni, mitä nyt sanoitkaan! 
 atene:ei ole jumalille vaikeata pelastaa ketään 
@@ -86,7 +97,8 @@ nestor:vuoteita ja vaippoja teillekin asti niin kauan kuin nestor elää, ei
 nestor:kuuluisan odysseun poika täällä vieraillessaan saa laivan kannella nukkua
 vale-mentor:oikein puhut, viisas nestor, telemakos levätköön luonasi, mutta minä menen
 vale-mentor:laivaan ja kerron sen nuorelle miehistölle, miten asiat ovat 
-vale-mentor:huomenna lähden kaukoniaan asioilleni, sillä aikaa kuin sinä lähetät poikasi telemakon mukana spartaan
+vale-mentor:huomenna lähden kaukoniaan asioilleni, sillä aikaa kuin sinä lähetät...
+vale-mentor:poikasi telemakon mukana spartaan
 nestor:nyt näen, nyt tiedän, ettet voi olla halpamielinen, koska jo noin nuorena sinua jumalat suosivat 
 nestor:se ei voinut olla kukaan muu kuin pallas atene hän sinun isääsikin erikoisesti suosi
 nestor:nyt rientäköön kukin työhön! 
@@ -97,13 +109,15 @@ nestor:te muut saatte jäädä kotiin juhla-ateriaa valmistamaan
 ylihovimestari:kuningas, kaksi vierasta pysäytti hevosensa porttisi eteen 
 ylihovimestari:asultaan he ovat kuin kuninkaan poikia 
 ylihovimestari:riennänkö riisumaan valjaat vai neuvonko heitä muualta asuntoa etsimään?
-menelaos:mehän olemme saaneet niin paljon vieraanvaraisuutta osaksemme maailmalla matkatessamme, lähettäisimmekö heidät siis pois 
+menelaos:mehän olemme saaneet niin paljon vieraanvaraisuutta osaksemme maailmalla ...
+menelaos:matkatessamme, lähettäisimmekö heidät siis pois 
 menelaos:ei suinkaan! riennä riisumaan hevoset ja johda vieraat juhliimme
 menelaos:kun olette ravitut, kertokaa, keitä olette ja mikä on asianne
 menelaos:kuninkaitten sukua olette, siitä puhuu käytöksenne
 telemakos:katsos, peisistratos, katsos tätä kullan ja hopean hohtoa 
 telemakos:täällä on kuin olympon saleissa zeun luona
-menelaos:ei kenkään kuolevainen voi zeun kanssa kilpailla, ja lienee muillakin yhtä suuria rikkauksia kuin minulla 
+menelaos:ei kenkään kuolevainen voi zeun kanssa kilpailla, ja lienee muillakin...
+menelaos:yhtä suuria rikkauksia kuin minulla 
 menelaos:mutta vaivalla nämä ovat saadut
 menelaos:vaikka omistaisin ainoastaan kolmanneksen tästä kaikesta, olisin kyllin onnellinen,
 menelaos:kunhan ei tarvitsisi surra sotatielle sortuneita 
@@ -115,12 +129,16 @@ helena:odysseun näköinen kuin tämä vieras
 helena:hänen pieni poikansa jäi kotiin isän lähtiessä minun, heikon naisen puolesta
 helena:käytyyn kovaan taisteluun ilionin muurien edustalle
 menelaos:puolisoni samoin olen minäkin arvellut
-menelaos:kädet, jalat, kasvot, katse, pään muoto, yksinpä hiuksetkin ovat samat kuin odysseulla 
-menelaos:ja kun hänen kärsimyksistään puhuin, näin, miten kyyneleet vierivät vieraamme silmistä, vaikkakin hän koetti sitä peittää
-peisistratos:oikein sanot, menelaos hän on odysseun poika telemakos ja on nyt saapunut luoksesi kysymään sinulta neuvoa 
-peisistratos:sillä vaikeata on nuorukaisen isätönnä, turvatonna asua kodissaan, jonka vieraat tahtovat tuhota
+menelaos:kädet, jalat, kasvot, katse, pään muoto, yksinpä hiuksetkin ovat samat kuin 
+menelaos:odysseulla ja kun hänen kärsimyksistään puhuin, näin, miten kyyneleet...
+menelaos:vierivät vieraamme silmistä, vaikkakin hän koetti sitä peittää
+peisistratos:oikein sanot, menelaos hän on odysseun poika telemakos ja on nyt 
+peisistratos:saapunut luoksesi kysymään sinulta neuvoa 
+peisistratos:sillä vaikeata on nuorukaisen isätönnä, turvatonna asua kodissaan, 
+peisistratos:jonka vieraat tahtovat tuhota
 menelaos:olen siis saanut kotiini sen ystäväni pojan, joka minun tähteni on saanut kovimmat kokea 
-menelaos:jos zeus olisi suonut minulle onnen hänet vielä kerran tavata, olisin ystävyyteni osoitteeksi lahjoittanut hänelle
+menelaos:jos zeus olisi suonut minulle onnen hänet vielä kerran tavata, olisin ystävyyteni 
+menelaos:osoitteeksi lahjoittanut hänelle
 menelaos:argossa kaupungin ja asunnon, jonne hän olisi saanut tuoda koko itakan
 menelaos:kansan silloin olisimme saaneet usein tavata toisiamme ja viettää
 menelaos:yhdessä vanhuutemme päivät mutta jumalat eivät ole sitä sallineet
@@ -145,7 +163,8 @@ helena:sain kuulla kaikki akaialaisten suunnitelmat
 helena:ja kaupungista pois lähtiessään hän surmasi suuret joukot troialaisia 
 helena:naiset itkivät, mutta minä iloitsin, sillä kaipasin kipeästi kotiini puolisoni ja pienokaiseni luo
 menelaos:totta puhut, puolisoni odysseun vertaista ei ole toista 
-menelaos:suurta malttia hän osoitti, kun me kaikki parhaat kreikkalaiset istuimme tuon puuhevosen sisässä, jonka avulla troian tuhosimme 
+menelaos:suurta malttia hän osoitti, kun me kaikki parhaat kreikkalaiset istuimme tuon puuhevosen sisässä, 
+menelaos:jonka avulla troian tuhosimme 
 menelaos:siellä ollessamme lähenit sinä hevosta 
 menelaos:varmasti joku jumala, joka katsoi troian parasta, sinut sinne johti 
 menelaos:sinä kuljit sen ympäri ja mainiten nimeltä ruhtinaitamme, matkit heidän puolisoittensa ääntä 
@@ -158,12 +177,14 @@ telemakos:mutta jo on aika käydä levolle, jotta huomenna jaksamme uusin voimin
 menelaos:ystäväni, nyt toivon sinun vastaavan suoraan, mikä sinut saattoi tänne pyhään spartaan? 
 menelaos:koskeeko asia sinua yksin vai onko se yleisempää laatua?
 telemakos:läksin tänne saadakseni kuulla sinulta isästäni 
-telemakos:vieraat miehet, äitini kosijat, täyttävät talon ja tuhlaavat kaiken omaisuuteni eikä mistään näy apua 
+telemakos:vieraat miehet, äitini kosijat, täyttävät talon ja tuhlaavat kaiken omaisuuteni 
+telemakos:eikä mistään näy apua 
 telemakos:siksi saavuin tänne ja nyt pyytämällä pyydän, jos jotain tiedät isästäni, 
 telemakos:joko sitten itse olet nähnyt tai muilta kuullut, niin sano suoraan minua säälimättä,
 telemakos:vaikka kohtalonsa kovakin olisi ollut
 menelaos:jopa jotakin kuulla sain! vai sinne kunnon miehen kotiin he aikovat vuoteensa raketa 
-menelaos:niin laskee hirvikin pienet vasikkansa leijonan luolaan, mutta kun leijona palaa, on vasikoiden loppu surkea 
+menelaos:niin laskee hirvikin pienet vasikkansa leijonan luolaan, mutta kun leijona palaa, 
+menelaos:on vasikoiden loppu surkea 
 menelaos:niin on käypä silloinkin, kun odysseus kerran palajaa
 menelaos:pyysit minua kertomaan, mitä tiedän, ja olen sen tekevä 
 menelaos:mitään peittelemättä kerron, mitä vanhalta merenhaltijalta kuulin

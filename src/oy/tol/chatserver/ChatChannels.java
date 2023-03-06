@@ -20,7 +20,7 @@ public class ChatChannels {
 
 	private ChatChannels() {
 		channels = new HashMap<>();
-		Channel main = new Channel();
+		Channel main = new Channel("main", true);
 		channels.put(main.getName(), main);
 	}
 
@@ -58,7 +58,7 @@ public class ChatChannels {
 		if (null != channel) {
 			channel.remove(session);
 			session.setChannel(null);
-			if (!channel.hasSessions() && !channel.getName().equals("main")) {
+			if (!channel.hasSessions() && !channel.isPermanent()) {
 				channels.remove(channel.getName());
 				System.out.println("Last user left from channel so it was closed");
 			}
@@ -71,7 +71,7 @@ public class ChatChannels {
 			channel.remove(session);
 			session.setChannel(null);
 			session.close();
-			if (!channel.hasSessions() && !channel.getName().equals("main")) {
+			if (!channel.hasSessions() && !channel.isPermanent()) {
 				channels.remove(channel.getName());
 				System.out.println("Last user left from channel so it was closed");
 			}
