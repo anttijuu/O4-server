@@ -21,6 +21,7 @@ public class ChatChannels {
 	private ChatChannels() {
 		channels = new HashMap<>();
 		Channel main = new Channel("main", true);
+		main.setTopic("Everything under the sun and moon");
 		channels.put(main.getName(), main);
 	}
 

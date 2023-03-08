@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Properties;
 
@@ -109,7 +111,6 @@ public class ChatSocketServer implements Runnable {
 		System.out.println(color + LocalDateTime.now() + ANSI_RESET + " " + message);
 	}
 
-
 	private void readConfiguration(String configFileName) throws FileNotFoundException, IOException {
 		log("Using configuration: " + configFileName, ANSI_YELLOW);
 		File configFile = new File(configFileName);
@@ -121,5 +122,12 @@ public class ChatSocketServer implements Runnable {
 		istream.close();
 		log("Server port: " + serverPort, ANSI_YELLOW);
 		botChannelName = config.getProperty("botchannel", "");
+		File botFile = new File(botChannelName + ".txt");
+		if (!botFile.isFile()) {
+			log("Bot file does not exist", ANSI_RED);
+			botChannelName = "";
+		} else {
+			log("Using bot channel " + botChannelName, ANSI_GREEN);
+		}
 	}
 }

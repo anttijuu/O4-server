@@ -140,7 +140,7 @@ To set up a bot channel, specify the file name (possibly with full path) in the 
 ```
 botchannel=odysseu
 ```
-The file `odysseu.txt` contains an example file. Some rules for the file:
+The file `odysseu.txt` (note the compulsory file extension!) contains an example file. Some rules for the file:
 
 * The bot channel name comes from the file name, so this file would create a channel named `odysseu`.
 * Lines beginning with `#` are comment lines and are not handled at all.

@@ -10,7 +10,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
-import oy.tol.chat.ChangeTopicMessage;
 import oy.tol.chat.ChatMessage;
 import oy.tol.chat.Message;
 
@@ -36,6 +35,7 @@ public class BotChannel extends Channel {
 
 	public BotChannel(String name) {
 		super(name, true);
+		setTopic("Bot channel");
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class BotChannel extends Channel {
 		}
 		String nextItem = messageStrings.get(messageIndex);
 		if (nextItem.startsWith("$")) {
-			msg = new ChangeTopicMessage(nextItem.substring(1));
+			setTopic(nextItem.substring(1));
 		} else {
 			int firstColonIndex = nextItem.indexOf(':');
 			if (firstColonIndex > 0) {

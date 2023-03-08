@@ -3,9 +3,9 @@ package oy.tol.chatserver;
 import java.util.ArrayList;
 import java.util.List;
 
+import oy.tol.chat.ChangeTopicMessage;
 import oy.tol.chat.ErrorMessage;
 import oy.tol.chat.Message;
-import oy.tol.chat.StatusMessage;
 
 public class Channel {
 	private String name = "";
@@ -40,7 +40,7 @@ public class Channel {
 
 	public void setTopic(String topic) {
 		this.topic = topic;
-		StatusMessage topicChanged = new StatusMessage("Channel topic changed to " + topic);
+		ChangeTopicMessage topicChanged = new ChangeTopicMessage(topic);
 		relayMessage(null, topicChanged);
 	}
 
@@ -65,6 +65,7 @@ public class Channel {
 	}
 
 	public void relayMessage(ChatServerSession fromSession, Message message) {
+		System.out.println("Relaying msg to " + sessions.size() + " clients");
 		sessions.forEach( session -> {
 			if (session != fromSession) {
 				session.write(message);

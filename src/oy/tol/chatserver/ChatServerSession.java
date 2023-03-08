@@ -56,6 +56,8 @@ public class ChatServerSession implements Runnable {
 		if (atChannel != null) {
 			StatusMessage arriving = new StatusMessage("You joined the channel " + atChannel.getName());
 			write(arriving);
+			ChangeTopicMessage topicMsg = new ChangeTopicMessage(atChannel.getTopic());
+			write(topicMsg);
 		}
 	}
 
@@ -111,7 +113,7 @@ public class ChatServerSession implements Runnable {
 				System.out.println("In session finally...");
 			}
 		}
-		System.out.println("ServerSession run loop finished");
+		System.out.println("Session run loop finished, client disconnected");
 	}
 
 	public void write(Message msg) {
@@ -120,7 +122,7 @@ public class ChatServerSession implements Runnable {
 
 	private void write(String message) {
 		if (state == State.CONNECTED) {
-			System.out.println("DEBUG OUT: " + message);
+			// System.out.println("DEBUG OUT: " + message);
 			out.write(message + "\n");
 			out.flush();
 		}
