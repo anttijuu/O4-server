@@ -21,7 +21,9 @@ Message types are the following:
 |  3   | Change topic message |
 |  4   | List channels message|
 
-Message classes in `oy.tol.chat` package implement these message types. The code also implements creating JSON text from the objects (`Message.toJSON()`) and parsing message objects from JSONObjects (`MessageFactory.fromJSON(JSONObject)`).
+Java Message classes in `oy.tol.chat` package implement these message types. 
+
+Converting Message objects to JSON text is implemented in `Message.toJSON()` methods. Parsing message objects from JSONObjects is done in `MessageFactory.fromJSON(JSONObject)`.
 
 Message contents in JSON are specified below.
 
@@ -41,7 +43,7 @@ If the value of `clientshutdown` is different from zero (0), the error requires 
 
 ### Status message
 
-Status messages are sent by the server ony. They indicate some event on the server side clients or users may be interested in.
+Status messages are sent by the server only. They indicate some event on the server side clients or users may be interested in.
 
 ```JSON
 {
@@ -54,7 +56,9 @@ Status messages are sent by the server ony. They indicate some event on the serv
 
 A client sends chat messages to the server, and server relays chat messages to other clients in the same *channel*.
 
-Here is a simple chat message, from user "telemakos". The `sent` element is a UTC timestamp in unix time. Clients should convert the UTC time to client's local time before showing the time of the message to the user.
+Here is a simple chat message, from user "telemakos". 
+
+The `sent` element is a UTC timestamp in unix time. Clients must convert the local time to UTC before sending the `ChatMessage` to the server. Also, clients must convert the UTC time to client's local time before showing the time of the incoming messages to the user.
 
 The `id` element must be a valid UUID.
 
@@ -89,9 +93,11 @@ When the last user leaves the channel, it is closed. The channel "main" is an ex
 ```JSON
 {
 	"type": 2,
-	"channel" : "channel",
+	"channel" : "ohjelmointi-4",
 }
 ```
+
+Users should keep the channel names short since displaying long channel names is not convenient. Currently the server does not limit channel or nick (user) name lengths.
 
 ### Change topic message
 
@@ -100,13 +106,16 @@ Change topic message changes the topic of the channel. Clients send this message
 ```JSON
 {
 	"type": 3,
-	"channel" : "channel"
+	"topic" : "ohjelmointi 4 -kurssiin liittyvää keskustelua"
 }
 ```
+The topic message is also send to client when it joins a channel.
 
 ### List channels message
 
-Clients can send a list channels message to the server. The message sent by the client:
+Clients can send a list channels message to the server. Server then replies with the same type of a message listing the currently open channels on the server. 
+
+The message sent by the client:
 
 ```JSON
 {
@@ -131,24 +140,28 @@ The numbers with each channel indicate the number of users currently on that cha
 
 ## Bot channel
 
-Server may also host a *bot channel*. Bot channel loads messages from a text file and a channel named from the bot file name is created. If any users join the channel, the bot channel starts to send chat messages to that channel. When the last user leaves the bot channel, no messages are sent. 
+Server may also host a *bot channel*. Bot channel loads messages from a text file. A channel gets it's name from the file name. 
 
-Bot channels are not closed, similarily to "main" channel. Thus when users list available channels on the server, the bot channel (if configured) is also listed as an available channel.
+If a user joins the channel, the bot channel starts to send chat messages to that channel. When the last user leaves the bot channel, no messages are sent.
+
+Bot channels are never closed, similarily to "main" channel. Thus, when users list available channels on the server, the bot channel (if configured) is also listed as an available channel.
 
 To set up a bot channel, specify the file name (possibly with full path) in the `chatserver.properties` settings file:
 
 ```
 botchannel=odysseu
 ```
-The file `odysseu.txt` (note the compulsory file extension!) contains an example file. Some rules for the file:
+The file `odysseu.txt` (note the compulsory file extension that is *not* mentioned in the config file!) contains an example file. Some rules for the file structure:
 
 * The bot channel name comes from the file name, so this file would create a channel named `odysseu`.
-* Lines beginning with `#` are comment lines and are not handled at all.
+* Lines beginning with `#` are comment lines and are not handled.
 * Lines beginning with `$` change the topic of the channel.
 * Empty lines are skipped.
-* Other lines are assumed to be chat message lines, where first character `:` splits the line in two: text before it is the nick of the sender and text after is the chat message to send.
+* Other lines are assumed to be chat message lines, where first `:` character found splits the line in two: text *before* `:` is the *nick* of the sender and text after `:` is the chat message to send to the client sessions in the channel.
 
 If this setting does not exist or the file name is empty or invalid, no bot channel is created.
+
+Currently server supports only one bot channel at a time.
 
 ## Building
 
@@ -160,9 +173,9 @@ mvn package
 
 ## Running 
 
-First copy `chatserver-template.properties` to `chatserver.properties` and then edit the settings to reflect the features active in the server.
+First edit the settings in `chatserver.properties` if necessary.
 
-Then run the server:
+Then run (assuming the server has been built) the server:
 
 ```console
 java -jar target/ChatServer-0.0.1-SNAPSHOT-jar-with-dependencies.jar chatserver.properties
@@ -171,6 +184,8 @@ java -jar target/ChatServer-0.0.1-SNAPSHOT-jar-with-dependencies.jar chatserver.
 Where the first parameter is the configuration file you wish to use to run the server.
 
 You can stop the server in a controlled way from the console with `/quit` command. An error message with shutdown required flag is sent to all connected clients before the server shuts down.
+
+You can use the command `/status` on the server console to print out the current channels and sessions on the server.
 
 ## More information
 
