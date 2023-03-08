@@ -10,7 +10,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
+import oy.tol.chat.ChangeTopicMessage;
 import oy.tol.chat.ChatMessage;
+import oy.tol.chat.Message;
 
 public class BotChannel extends Channel {
 	
@@ -24,12 +26,9 @@ public class BotChannel extends Channel {
 	private class PostMessageTask extends TimerTask {
 		@Override
 		public void run() {
-			ChatMessage randomMessage = createRandomMessage();
-			if (null != randomMessage) {
-				System.out.println("BOT: relaying message from " + randomMessage.getNick());
-				relayMessage(null, randomMessage);
-			} else {
-				System.out.println("BOT: Failed to create a message");
+			Message message = createMessage();
+			if (null != message) {
+				relayMessage(null, message);
 			}
 			int nextGap = ThreadLocalRandom.current().nextInt(MAX_TIMER_GAP_MS) + MIN_TIMER_GAP_MS;
 			timer.schedule(new PostMessageTask(), nextGap);		}
@@ -71,22 +70,31 @@ public class BotChannel extends Channel {
 		}
 		System.out.println("BOT: Activating the bot");
 		messageStrings = new ArrayList<>();
-		readRandomMessages();
+		readMessagesFromFile();
 		botActive = true;
+		messageIndex = 0;
 		timer = new Timer();
 		timer.schedule(new PostMessageTask(), MAX_TIMER_GAP_MS);
 	}
 
-	private ChatMessage createRandomMessage() {
+	private Message createMessage() {
+		Message msg = null;
 		if (messageIndex >= messageStrings.size()) {
 			messageIndex = 0;
 		}
-		String [] elements = messageStrings.get(messageIndex).split(":");
-		messageIndex++;
-		if (elements.length == 2) {
-			return new ChatMessage(elements[0], elements[1]);
+		String nextItem = messageStrings.get(messageIndex);
+		if (nextItem.startsWith("$")) {
+			msg = new ChangeTopicMessage(nextItem.substring(1));
+		} else {
+			int firstColonIndex = nextItem.indexOf(':');
+			if (firstColonIndex > 0) {
+				String nick = nextItem.substring(0, firstColonIndex);
+				String msgText = nextItem.substring(firstColonIndex+1);
+				msg = new ChatMessage(nick, msgText);
+			}
 		}
-		return null;
+		messageIndex++;
+		return msg;
 	}
 
 	private void deactivateBot() {
@@ -100,12 +108,14 @@ public class BotChannel extends Channel {
 		timer = null;
 	}
 
-	private void readRandomMessages() throws IOException {
+	private void readMessagesFromFile() throws IOException {
 		String fileName = getName() + ".txt";
 		BufferedReader messageReader = new BufferedReader(new FileReader(fileName, StandardCharsets.UTF_8));
 		String line;
-		while ((line = messageReader.readLine()) != null && line.length() > 0) {
-			messageStrings.add(line.trim());
+		while ((line = messageReader.readLine()) != null) {
+			if (!line.startsWith("#") && line.length() > 0) {
+				messageStrings.add(line.trim());
+			}
 		}
 		messageReader.close();
 		System.out.println("Bot has " + messageStrings.size() + " messages to use");

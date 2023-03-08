@@ -1,3 +1,424 @@
+# author	homer, 750? bce-650? bce
+# translator	sirkka, impi, 1884-1973
+# title	odysseun harharetket: suorasanaisesti kerrottuna
+# acquired from https://www.gutenberg.org/ebooks/52108
+
+$odysseun harharetket: suorasanaisesti kerrottuna
+
+$odysseun harharetket ensimäinen runo
+kertoja:hävitettyään troian pyhän kaupungin käänsivät kreikkalaiset laivansa
+kertoja:kotia kohti. monia seikkailuja he saivat kokea, ken joutui
+kertoja:haaksirikkoon, kenen koti oli hävitetty, kenelle taas oli joku muu
+kertoja:onnettomuus tapahtunut. suuri osa oli kuitenkin vuosien kuluessa
+kertoja:saapunut koteihinsa; viisas odysseus yksin yhä kierteli meriä
+kertoja:katkerasti ikävöiden kotiinsa. jumalatkin säälivät maailmalla
+kertoja:ajelehtivaa urosta; poseidon vain kantoi vihaa ja vainosi häntä, kunnes
+kertoja:hän vihdoin saapui kotirannalleen.
+kertoja:nyt oli poseidon lähtenyt kauas etiopian maahan kantamaan kansan
+kertoja:uhraamaa jumal'uhria. hänen siellä parhaillaan nauttiessaan herkullista
+kertoja:ateriaansa, kokoontuivat toiset jumalat olympon saleihin zeun luo.
+kertoja:täällä johti zeus, jumalain ja ihmisten isä, keskustelun maan lapsiin...
+
+zeus:on ikävätä että ihmiset aina syyttävät kaikista onnettomuuksistaan
+zeus:jumalia, silloinkin, kun he itse ovat tehneet rikoksia.
+
+atene:olet oikeassa, ja useimmiten he ovat itse ansainneet rangaistuksen.
+atene:mutta sydäntäni kirvelee se tuskien taakka, mikä jalon odysseun
+atene:harteille on laskettu. pakotettuna elämään kaukaisessa saaressa
+atene:keskellä aavaa valtamerta hän on jo kauan saanut kärsiä koti-ikävää.
+atene:julman atlas-jättiläisen tytär, ihanamuotoinen kalypso siellä
+atene:metsäisessä saaressa asuu, kahlehtien luonaan urosta ja koettaen
+atene:lumosanoin saada hänet unohtamaan kotinsa itakan. mutta odysseus, joka
+atene:ei muuta ole ajatellut, kuin saada nähdä savun nousevan kotoisilta
+atene:saariltansa, ikävöi nyt toivottomana kuolemaa. oi, sinä suuri zeus,
+atene:eikö hänen kohtalonsa liikuta sydäntäsi? onhan hän sinulle uhrit
+atene:kantanut, miksi vihaat häntä?
+
+zeus:lapsi, lapsi! olisinko minä unohtanut odysseun, jumalain vertaisen,
+zeus:muita kuolevaisia viisaamman. en toki. mutta poseidon on vihannut häntä
+zeus:siitä asti kuin hän tämän pojan, kyklopi polyfemon, silmän puhkaisi.
+zeus:hän ei salli uroon kotirantaan saapua. neuvotelkaamme nyt, miten
+zeus:autamme hänet jälleen kotiinsa. poseidon luopukoon vihastaan; eihän hän
+zeus:voi yksin jumalia vastustaa.
+
+atene:oi, jumalien isä, jos on kaikkien iäisten jumalien
+atene:tahto, että viisas odysseus saa jälleen synnyinmaahansa palata, niin
+atene:lähettäkäämme silloin hermes, sanansaattajamme, kiharakutrisen nymfin
+atene:luo ilmoittamaan hänelle luja päätöksemme. itse riennän itakaan
+atene:puhumaan odysseun pojalle, telemakolle, lohdutuksen sanoja,
+atene:kehoittamaan häntä kutsumaan kreikkalaiset neuvottelukokoukseen,
+atene:päättämään, miten karkoittaa talosta kosijain suuret joukot, jotka
+atene:viettävät ylönsyömisessä päivänsä ja teurastavat pian koko odysseun
+atene:karjan. lähetän hänet sitten spartaan ja hiekkarantaiseen pyloon
+atene:ottamaan selkoa isästään. samalla hankkii hän itselleen nimen
+maailmalla.
+
+kertoja:näin lausuen hän sitoi jalkaansa taivaisen ihanat kultasandaalinsa,
+kertoja:jotka tuulen vauhdilla kiidättävät häntä yli maitten ja merien.
+kertoja:tarttuen sitten pitkään, painavaan, kuparisilaiseen keihääseensä, hän
+kertoja:nopeasti kiiti pois olymposta ja pysähtyi keihääseensä nojaten odysseun
+kertoja:linnan ovenpieleen, ottaen tafian kuninkaan menteen hahmon. täällä hän
+kertoja:näki suuren joukon saarien ruhtinaita, jotka olivat kerääntyneet sinne
+kertoja:kosimaan kuningatar penelopea. istuen eläinten taljoilla he pelasivat
+kertoja:noppaa ja orjat palvelivat heitä. heidän keskellään istui telemakos
+kertoja:murheissaan isänsä viipymisestä ja harmissaan vieraitten julkeudesta.
+kertoja:siinä miettiessään hän havaitsi ovensuussa seisovan vieraan, riensi
+kertoja:hänen luokseen, toivotti hänet tervetulleeksi ja pahoitteli sitä, että
+kertoja:vieras kenties jo kauankin oli saanut seisoa ovella kenenkään
+kertoja:huomaamatta. sitten hän käski tuomaan vieraalle ruokaa ja viiniä. hänen
+kertoja:keihäänsä hän asetti vasten korkeaa pilaria, jossa jo ennestään oli
+kertoja:joukko uljaan odysseun komeita keihäitä. sitten hän johti vieraansa
+kertoja:kallisarvoisten vaippojen verhoamalle istuimelle ja istuutui itse
+kertoja:viereen, syrjään meluavista kosijoista. orjatar kantoi kultamaljalla
+kertoja:vettä ja valeli sillä vieraan kädet, toinen toi pöytään talon parhaita
+kertoja:herkkuja. samassa astuivat sisään meluavat kosijat ja asettuivat
+kertoja:arvojärjestykseen penkeille ja raheille pöytien ääreen.
+
+kertoja:syötyä alkoi kosijain joukko kaivata soittoa ja tanssia, ja femion
+kertoja:soittaessa ihanaa sitraa kumartui isäntä atenen puoleen puhellen hiljaa...
+
+telemakos:vieras, ällös sanojani pahastu! nuo toiset löytävät huvinsa laulusta
+telemakos:ja soitosta. he tuhlaavat toisen omaisuutta, miehen, jonka vaalenneet
+telemakos:luut kenties maatuvat jonkin vieraan maan kamaralla, elleivät aallot
+telemakos:niitä ajele ulapalla. jospa he kerran saisivat nähdä hänen palaavan
+telemakos:itakaan, unohtaisivat he kultakirjaillut pukunsa ja muut koristuksensa
+telemakos:ja kiittäisivät onneaan, jos pelastuisivat isännän käsiin joutumasta.
+telemakos:mutta uros on joutunut säälimättömän kohtalon uhriksi, eikä enää ole
+telemakos:toivon rahtuakaan, vaikkakin ennustetaan hänen kerran palaavan. -- nyt
+telemakos:on sinun vuorosi kertoa ken olet, mistä tulet, kutka ovat vanhempasi ja
+telemakos:mikä laiva sinut tänne toi? vielä kerro, oletko talossa ensi kertaa vai
+telemakos:oletko jo odysseun aikana ollut hänen vieraanaan?
+
+kertoja:loistavin katsein silloin vale-mentes kävi puhumaan. kertoi olevansa
+kertoja:tafian kuningas, viisaudestaan kuulun ankialon poika, ja nyt matkalla
+kertoja:laivoineen kypron saarelle kuparirikkaaseen temeeseen vaihtaakseen omia
+kertoja:hohtavia rautavarastojaan kypron kuuluun kupariin.
+
+vale-mentes:ystäviä olimme, isäsi ja minä, jo ammoin. siitä voisi kertoa kuningas
+vale-mentes:laertes, isäsi isä, vaikka olen kuullut sanottavan, ettei hän enää tule
+vale-mentes:tänne, vaan surren työskentelee viinitarhoissaan. poikkesin tänne,
+vale-mentes:koska luulin kuulleeni isäsi jo palanneen. jumalat ovat kuitenkin vielä
+vale-mentes:hänen matkaansa estäneet. mutta vaikken olekaan ennustaja, enkä taida
+vale-mentes:lintujen taikoja tulkita, sanon sinulle kuitenkin sen, mitä jumalat
+vale-mentes:ovat sydämeeni painaneet: kaukana ei isäsi enää ole. pian hän palaa,
+vale-mentes:esteet voittaa ja kotiinsa rientää. mutta, sanoppa, nuorukainen, oletko
+vale-mentes:sinä odysseun poika? katseesi ja pääsi muoto ovat ihmeellisesti samat.
+
+telemakos:ystävä, isääni en tunne, syntyäni en tiedä.
+telemakos:äitini sanoo minun olevan odysseun pojan. toivoisinpa melkein, että
+telemakos:isäni olisi vanhus, joka saa rauhassa nauttia elämänsä iltahetkiä.
+
+vale-mentes:jumalat eivät ole määränneet sukuasi maineetonna sammumaan, koska
+vale-mentes:penelope on puolisolleen synnyttänyt sinunlaisesi nuorukaisen. mutta
+vale-mentes:kerro, mitä väkeä täällä näin runsaasti on? onko täällä juhlat?
+vale-mentes:häitäsikö vietät? vieraasi ovat rohkeita, säälimättä he näkyvät täällä
+vale-mentes:elämöivän. johan jokainen rehellinen ihminen puhkeaa harmiin tätä nähdessään.
+
+telemakos:oli kotini kerran rikas ja mahtava ja olisi vieläkin, jos eläisi
+telemakos:isäni. jospa hän olisi edes kaatunut troialaisten parissa tai
+telemakos:ummistanut silmänsä ystävien luona, silloin en häntä niin raskaasti
+telemakos:surisi, ja kreikkalaiset olisivat pystyttäneet hänelle muistomerkin.
+telemakos:nyt ovat harpyiat vieneet hänet maineetonna myötänsä. sitä suren. mutta
+telemakos:jumalat ovat lähettäneet vielä muitakin huolia. ympäröivien saarien
+telemakos:hallitsijat, kaikki lähistön ruhtinaat kosivat äitiäni. hän ei tahdo
+telemakos:heihin suostua, mutta ei uskalla heitä karkoittaakaan, ja nyt he
+telemakos:hävittävät kotini putipuhtaaksi ja lopulta he riistävät henkenikin.
+
+kertoja:harmin valtaamana kehoitti silloin atene telemakoa kutsumaan kokoon
+kertoja:kosijat ja vaatimaan heitä palaamaan kotiinsa. jos penelope jonkun
+kertoja:heistä puolisokseen valitsee, lähteköön hän silloin takaisin isänsä
+kertoja:kotiin ja siellä pidettäköön häät. mutta vielä toisenkin neuvon antoi atene.
+
+vale-mentes:varusta laivoistasi paras, ota kaksikymmentä taitavinta soutajaa ja
+vale-mentes:lähde kyselemään, onko kenkään kuullut isästäsi mitään. riennä ensin
+vale-mentes:pyloon viisaan nestorin puheille, sieltä mene spartaan kultakutrisen
+vale-mentes:menelaon luo, hänen, joka viimeisenä kreikkalaisista palasi. jos kuulet
+vale-mentes:isäsi olevan elossa ja kotimatkalla, odota sitten, vaikka miten
+vale-mentes:raskaaksi odotus-aikasi kävisi. jos taas kuulet hänet kuolleeksi, palaa
+vale-mentes:silloin rakkaille kotirannoillesi, pystytä muistopatsas isällesi ja
+vale-mentes:juhlien vietä hänen muistoaan. silloin on äitisi vapaa uuteen
+vale-mentes:avioliittoon. kaiken tämän tehtyäsi mieti tarkoin, miten saat
+vale-mentes:kostetuksi kosijoille, sillä nytpä on jo aika sinunkin näyttää olevasi
+vale-mentes:mies. muistanet, minkä kunnian saavutti jalo orestes kostettuaan
+vale-mentes:kavalalle aigistolle, kuninkaan murhaajalle?
+
+kertoja:telemakos oli tarkkaavaisena kuunnellut vieraan sanoja. kun tämä oli
+kertoja:lopettanut ja aikoi lähteä, sanoi hän kiitollisena...
+
+telemakos:sanasi ovat lähtöisin ystävän sydämestä. puhut kuin isä pojalleen,
+telemakos:enkä sitä koskaan unohda. mutta viipyös hetkinen vielä, tahdon antaa
+telemakos:sinulle muistoksi hyvän ystävän lahjan.
+
+kertoja:mutta jumalatar vastasi siihen...
+
+vale-mentes:älä minua viivytä, sillä lähdön aika on tullut. kun matkaltani palaan,
+vale-mentes:poikkean jälleen luoksesi, silloin voit lahjasi antaa.
+
+kertoja:neuvot annettuaan atene nousi ja riensi linnun nopeudella laivallensa
+kertoja:huolimatta telemakon pyynnöistä. mutta nuorukaisen sydämen oli hän
+kertoja:sytyttänyt. isän kuva oli entisestään kirkastunut, ja silloin hänen
+kertoja:siinä miettiessään selvisi hänelle, ettei vieras voinut olla muu kuin jumala.
+
+kertoja:sillä välin olivat kosijat huvitelleet parhaansa mukaan ja paraikaa
+kertoja:soitti femios kreikkalaisten surullisesta paluusta troiasta. ihana
+kertoja:penelope oli istunut yliskamarissaan soittoa kuunnellen. murheellisena
+kertoja:hän astui sieltä alas saliin kahden orjattaren seuraamana ja pysähtyi
+kertoja:ovipieleen hiljaa, kookkaana, hunnulla ihanat kasvonsa peittäen. itkien
+kertoja:hän kääntyi soittajan puoleen ja virkkoi...
+
+penelope:femios, osaathan lauluja paljon, osaat niitä, jotka kertovat jumalain
+penelope:ja ihmisten urotöistä. oi, laula niitä ja suo vieraitten nauttia
+penelope:rauhassa viiniään. mutta lopeta jo tämä tuskien muistolaulu. se
+penelope:kirvelee sydäntäni ja saattaa minut yhä voimakkaammin kaipaamaan puolisoani.
+
+telemakos:äiti, mikset sallisi laulajan halunsa mukaan mieltämme ilahuttaa?
+telemakos:eihän laulaja ole syypää kohtaloomme. sitä paitsi kuunnellaanhan aina
+telemakos:mieluimmin laulettavan siitä, mikä on äskettäin tapahtunut. koeta
+telemakos:hillitä mielesi. eihän ollut odysseus ainoa kaatunut, samahan oli
+telemakos:siellä muittenkin kohtalo. palaa siis huoneisiisi ja hoida siellä
+telemakos:tehtäviäsi. siellä olet sinä käskijänä, täällä taas minä.
+
+kertoja:poikansa järkeviä sanoja ihmetellen palasi penelope huoneisiinsa ja
+kertoja:itki siellä katkerasti, kunnes atene vuodatti virkistävän unen surevan
+kertoja:väsyneihin silmiin.
+
+kertoja:hänen mentyään puhkesi salissa kova hälinä. kukin toivoi saavansa
+kertoja:ihanan kuningattaren puolisokseen. mutta telemakos kääntyi kosijain
+kertoja:puoleen ja virkkoi ääntänsä korottaen...
+
+telemakos:te rohkeat kosijat, iloitkaa ja juhlikaa tänään ja sallikaa laulajan
+telemakos:jumalaisen äänen kaikua. huomenna kutsun teidät kokoon ja ilmoitan
+telemakos:teille ajatukseni. toivon teidän jättävän taloni. juhlikaa muualla,
+telemakos:käykää vuoroin toistenne vieraina, sehän on sopivampaa kuin täällä
+telemakos:lopettaa toisen omaisuutta. suuri zeus on sen teille kostava.
+
+kertoja:kosijat purivat harmissaan huultaan, ihmetellen nuorukaisen rohkeita
+kertoja:sanoja. vihdoin antinous sanoi...
+
+antinous:telemakos, varmaankin ovat jumalat panneet suuhusi noin rohkeat sanat.
+antinous:kenties zeus tekee sinut vielä kerran itakan kuninkaaksi oikeata
+antinous:perintöäsi hallitsemaan.
+
+telemakos:kuninkaana olo ei ole arvoaan vailla. hänen talonsa rikastuu ja itse
+telemakos:hän saa kunniaa. jos zeus suo, otankin kuninkuuden mielelläni vastaan.
+telemakos:mutta onhan täällä itakassa muita sekä nuoria että vanhoja, joista joku
+telemakos:voi nousta kuninkaaksi odysseun kuoltua. en muuta pyydä kuin saada
+telemakos:omassa talossani elää rauhassa ja hallita orjia sekä sitä omaisuutta,
+telemakos:minkä odysseus itse on sodissa koonnut.
+
+eurymakos:yksin jumalat tietävät, kuka itakan hallitsijaksi tulee. sinun talosi
+eurymakos:on kuitenkin sinun yksityisomaisuuttasi. mutta kerro, ken oli äskeinen
+eurymakos:vieras ja mistä hän tuli? toiko hän tietoja isästäsi vai omilla
+eurymakos:asioillaanko hän luonasi kävi? miksi hän niin nopeasti poistui ja
+eurymakos:miksei hän kenenkään seuraa etsinyt? ja kuitenkin näki hänestä, ettei
+eurymakos:hän ollut halpaa sukua.
+
+telemakos:oi, eurymakos, se päivä ei koita, jolloin isäni palaisi. en usko sitä,
+telemakos:vaikka ennustajat, joilta äitini kyselee, niin sanoisivatkin. kysyit,
+telemakos:ken vieras oli. hän sanoi olevansa mentes, tafian kuningas.
+
+kertoja:ilta kului yhä pitemmälle ja kosijat viettivät sitä soittaen ja
+kertoja:tanssien, kunnes vihdoin kukin läksi huoneeseensa. telemakoskin astui
+kertoja:omiin kammioihinsa monien ajatusten risteillessä hänen aivoissaan.
+kertoja:vanha, viisas eurykleia, joka nuoresta neidosta asti oli ollut talossa
+kertoja:ja hoitanut telemakoa lasna, astui edellä valaisten soihdulla tietä.
+kertoja:kauniissa huoneessaan laskeutui telemakos vuoteelleen eurykleian
+kertoja:järjestellessä hänen vaatteensa ja ripustaessa ne naulaan. sen tehtyään
+kertoja:hiipi vanhus hiljalleen pois sulkien oven jäljessään. mutta nuorukainen
+kertoja:ei vaipunut uneen, vaan suunnitteli mielessään atenen neuvomaa matkaa.
+
+
+$odysseun harharetket toinen runo
+
+kertoja:aamun valjetessa telemakos kutsutti kansan kokoon. kun tori oli
+kertoja:nopeasti täyttynyt, tuli hän kahden koiran seuraamana, kuparinen keihäs
+kertoja:kädessä, itse paikalle ja atene loi merkillisen jumalaisen loisteen
+kertoja:hänen ympärilleen, niin että kaikki, yksin vanhimmatkin, tekivät
+kertoja:hänelle kunnioittavasti tilaa hänen astuessaan isänsä paikalle.
+
+kertoja:kokoukseen oli saapunut myös vanha, kokenut aigyptios, jonka pojista
+kertoja:eräs oli lähtenyt troiaan odysseun kanssa ja jota hän yhä katkerasti
+kertoja:suri. kaksi hänen pojistaan hoiti isänsä kanssa maita, neljäs vietti
+kertoja:päivänsä kosijain parissa odysseun talossa.
+
+kertoja:tämä viisaudestaan kuulu vanhus ryhtyi ensimäisenä puhumaan...
+
+aigyptios:vuosia on kulunut siitä päivästä, jolloin viimeksi, jalon odysseun
+aigyptios:kutsumina, olimme täällä koossa. ken on meidät nyt kutsunut?
+aigyptios:telemakosko? onko hän saanut tietoa sotaan lähteneistä vai haluaako hän
+aigyptios:kanssamme neuvotella tärkeistä asioista? miten lieneekin, siunatkoon
+aigyptios:zeus hänen aikeensa ja suokoon niiden menestyä.
+
+telemakos:en ole saanut lähteneistä tietoa, mutta tahtoisin kääntyä teidän,
+telemakos:itakan miesten puoleen, pyytäen teiltä apua. isäni on kerran kuninkaana
+telemakos:teitä hallinnut, mutta nyt tahtovat kansamme parasten miesten pojat
+telemakos:pakottaa äitini vastoin tahtoaan naimisiin, ja vastausta odotellessaan
+telemakos:tuhlaavat koko omaisuutemme. lopettakaa tämä vääryys ja antakaa minun
+telemakos:suruineni olla rauhassa, muuten vedätte zeun koston päällenne!
+
+kertoja:itkien hän lopetti puheensa ja kaikki tunsivat myötätuntoa tuota nuorta
+kertoja:miestä kohtaan. nousi silloin kosijain joukosta antinous vastaamaan...
+
+antinous:telemakos, ällös meitä soimaa, vaan soimaa äitiäsi, joka on viekkain
+antinous:kaikista vaimoista. neljäs vuosi on kohta loppuun kulunut siitä kuin
+antinous:tänne tulimme ja äitisi yhä kohtelee meitä viekkaudella. kaikille hän
+antinous:lähettää tervehdyksiä, kaikissa pitää toivoa yllä, vaikka ajatukset
+antinous:askartelevat muualla. pitkän kankaan hän loi, kangaspuihin pani ja
+antinous:lausui: 'jalosukuiset kosijani, älkää häitäni kiirehtikö, sallikaa
+antinous:minun kutoa tämä kangas laerteen kuolinvaipaksi. jos se kesken jää,
+antinous:jäävät langat käyttämättä!' näin hän puhui. kolme vuotta häntä
+antinous:uskoimme, kunnes petos tuli ilmi. minkä hän päivällä kutoi, sen hän
+antinous:yöllä purki. lähetä äitisi luotasi isänsä kotiin, siellä
+antinous:valmistettakoon hänen myötäjäisensä ja valittakoon puoliso. siihen asti
+antinous:kuin sen teet, elämme talossasi ratkaisua odottaen.
+
+telemakos:en voi, oi antinous, ajaa talosta äitiäni, joka minulle on elämän
+telemakos:antanut ja minua lasna hoitanut. kosto kerran kohtaisi minua
+telemakos:sellaisesta teosta. mutta lopettakaa te hurjistelunne ja vierailkaa
+telemakos:toistenne luona.
+
+kertoja:hänen siinä puhuessaan lähetti zeus kaksi kotkaa. nämä leijailivat
+kertoja:ensin liikkumattomin siivin rauhallisesti rinnakkain. mutta
+kertoja:saavuttuaan kokoontuneitten kohdalle ne alkoivat lyödä siivillään
+kertoja:voimakkaasti ilmaa, lennellä edestakaisin ja katsella uhkaavasti alas
+kertoja:kansanjoukkoon. samassa ne syöksyivät toistensa kimppuun ja lensivät
+kertoja:sitten toisiaan raadellen pois yli kaupungin talojen. kaikki olivat
+kertoja:huomanneet lintujen lennon ja kyselivät nyt äänekkäästi ihmetellen,
+kertoja:mitä se merkitsisi.
+
+kertoja:tietäjä aliterses ymmärsi lintujen lennosta lukea jumalien tahdon ja
+kertoja:hänpä nyt selitti...
+
+aliterses:varokaa, kosijat ja te muutkin. suuri onnettomuus uhkaa teitä kaikkia.
+aliterses:kun odysseus läksi troiaan, ennustin, että hän tulisi paljon kovaa
+aliterses:kokemaan ja vihdoin palaamaan tuntemattomana kahdenkymmenen vuoden
+aliterses:kuluttua. nyt se aika on kulunut ja odysseus saapuu varmasti.
+
+kertoja:kosijat vastasivat pilkaten tietäjän sanoihin, mutta telemakos lausui...
+
+telemakos:on turhaa puhua teille, te korskeat kosijat. pyydän vain laivaa ja
+telemakos:kahtakymmentä soutajaa lähteäkseni spartaan ja pyloon kuulemaan,
+telemakos:tietääkö kukaan mitään isästäni. jos kuulen hänet kuolleeksi, palaan
+telemakos:kotiin, pystytän hänelle muistomerkin ja vietän juhlalliset
+telemakos:hautajaiset. silloin on äitini valmis uuteen avioliittoon.
+
+kertoja:hän istuutui ja puhumaan nousi nyt vanha mentor, odysseun ystävä, jolle
+kertoja:hän lähtiessään oli uskonut kotinsa valvonnan. hän sanoi...
+
+mentor:kuulkaa minua, miehet itakan! soisin tästä lähtien saavanne kuninkaan
+mentor:ankaran ja säälimättömän, koska te olette voineet unohtaa odysseun,
+mentor:joka kohteli kansaansa kuin isä lapsiaan. kosijoista en puhukaan,
+mentor:heitä uhkaa perikato, vaan teitä muita moitin siitä, että
+mentor:sallitte kuninkaanne talossa niin elettävän. olettehan te toki
+mentor:monilukuisemmatkin kuin nuo röyhkeät kosijat.
+
+kertoja:silloin nousi leokritos kosijain puolesta puhumaan...
+
+leokritos:joutavia juttelet, mentor. yllytäthän kansaa vastaamme. se on supi
+leokritos:suotta. vaikkapa itse odysseus palaisi, niin kävisipä huonosti hänen,
+leokritos:jos ryhtyisi meitä karkoittamaan. ei, hyvät miehet, lähteköön kukin
+leokritos:töilleen. mentor ja aliterses pitäkööt huolta telemakon matkasta. siitä
+leokritos:tuskin kuitenkaan mitään tulee.
+
+kertoja:tähän päättyi kansankokous. kukin kävi askareilleen, kosijat odysseun taloon.
+
+kertoja:telemakos astui yksin meren rannalle, pesi merivedessä kätensä ja
+kertoja:kääntyi rukoillen atenen puoleen...
+
+telemakos:auttaos minua, suuri jumalatar, joka eilen luonani vierailit ja
+telemakos:kehoitit minua lähtemään isääni etsimään! auta minua, sillä kansa ja
+telemakos:etenkin nuo korskat kosijat tahtovat matkaani estää.
+
+kertoja:hänen siinä rukoillessaan pysähtyi jumalatar hänen viereensä mentorin hahmossa...
+
+mentor/atene:jos olet odysseun ja penelopen poika, et saa peljäten jättää matkaasi
+mentor/atene:suorittamatta. älä huolehdi siitä, mitä kosijat sanovat, he, raukat,
+mentor/atene:eivät aavista, mikä kohtalo heitä uhkaa. samana päivänä he joutuvat
+mentor/atene:kaikki kuoleman saaliiksi. mene rauhassa kotiisi, vietä iltasi heidän
+mentor/atene:kanssaan ja varusta viinit ja viljat sekä muut matkatarpeet. minä pidän
+mentor/atene:huolta sekä laivasta että miehistöstä.
+
+kertoja:kun telemakos saapui kotiinsa, olivat kosijat pihalla, mikä vuohta
+kertoja:teurastamassa, mikä mitäkin askaroimassa. antinous kävi nauraen häntä
+kertoja:vastaan, tarttui hänen käteensä ja sanoi...
+
+antinous:terve, rakas telemakos! syö, juo ja riemuitse kerallamme. kyllä muut
+antinous:sinulle sekä laivan että miehet valitsevat, siitä saat olla huoleti.
+
+kertoja:mutta telemakos veti hiljaa kätensä pois, virkkaen...
+
+telemakos:en halua kanssanne iloita. te olette kauan minulle vain vahinkoa
+telemakos:saattaneet. nyt olen mieheksi varttunut ja toivotan kostoa teille.
+telemakos:matkaani ei mikään voi estää, ja ellen täältä laivoja saa, saan niitä muualta.
+
+kertoja:kosijat silloin pilkkaamaan häntä mikä sanoen mitäkin. eräs virkkoi...
+
+kosija-1:telemakos aikonee hakea spartasta ja pylosta apua murhatakseen meidät
+kosija-1:kaikki tai kenties hän tuo salaista myrkkyä, jota sekoittaa juomaamme.
+
+kosija-2:tai ehkäpä hän odysseun tavoin harhailtuaan joutuu itse surman
+kosija-2:suuhun. mutta siten hän, mies parka, tekee meidän asemamme vielä
+kosija-2:vaikeammaksi, sillä silloin on meidän jaettava keskenämme vielä
+kosija-2:hänenkin perintö-osansa. ainoastaan talon annamme hänen äidilleen ja
+kosija-2:tämän tulevalle puolisolle.
+
+kertoja:tällaista hän sai kuulla ympäriltään, mutta hän jätti heidät ja astui
+kertoja:isänsä suuriin varastosaleihin, joissa säilytettiin kasottain kultaa ja
+kertoja:hopeaa, arkuttain vaatteita ja suurin määrin kallisarvoisia öljyjä.
+kertoja:siellä oli myös kalliit varastot vanhoja viinejä, joita ainoastaan
+kertoja:kuningas itse sai käyttää. eurykleia, talon uskottu, säilytti tarkoin
+kertoja:näiden varastojen avaimet.
+
+telemakos:rakas hoitajani, pane kahteentoista kannelliseen astiaan lähinnä 
+telemakos:parasta viiniä ja täytä yhtä monta säkkiä parhaalla viljalla. 
+telemakos:tulen ne itse noutamaan äitini mentyä levolle. lähden spartaan ja
+telemakos:pyloon etsimään isääni, mutta älä sinä tästä kerro mitään äidilleni.
+
+kertoja:tämän kuultuaan alkoi uskollinen eurykleia katkerasti itkeä...
+
+eurykleia:rakas lapsi, minne sinä aiot mennä avarassa maailmassa? sinä
+eurykleia:ainokaisemme, jää'ös kotiin! pois mentyäsi keksivät kavalat kosijat
+eurykleia:turmion sinulle. älä mene!
+
+telemakos:älä huolehdi, lähden jumalain kehoituksesta. vanno vain, ettet
+telemakos:äidilleni ilmoita mitään matkastani, ennenkuin yksi- tai kaksitoista
+telemakos:päivää on kulunut, ellei hän sitä ennen minua kaipaa.
+
+kertoja:eurykleia vannoi valan ja ryhtyi sitten täyttämään viiniastioita ja
+kertoja:viljasäkkejä. telemakos taas kävi kosijain joukkoon.
+
+kertoja:sillä aikaa kulki atene, ottaen telemakon hahmon, kaupungilla, kooten
+kertoja:paraita miehiä laivaan, jonka hän myös hankki.
+
+kertoja:kun aurinko laski ja hämärä verhosi kaupungin, saapui hän mentorin
+kertoja:hahmossa odysseun talolle, uuvutti kosijat uneen ja kutsui telemakoa...
+
+mentor/atene:joudu, laivaväkesi odottaa, aika rientää!
+
+kertoja:kookasta atenea seuraten riensi telemakos rantaan, jossa kaikki oli
+kertoja:valmiina. täällä hän kääntyi soutajien puoleen, lausuen...
+
+telemakos:tulkaa kanssani! matkatarpeemme ovat varastohuoneissamme valmiina.
+telemakos:mutta liikkukaa hiljaa talossa, ettette herätä nukkuvia, sillä
+telemakos:lähdöstäni ei tiedä kenkään, yhtä palvelijaa lukuunottamatta, ei edes
+telemakos:äitini.
+
+kertoja:matkatarpeet tuotiin laivaan, telemakos asettui keulaan ja atene
+kertoja:pysähtyi hänen viereensä. hohtavat purjeet nostettiin, ja laiva kiiti
+kertoja:myötätuulessa iltaruskon kultaamalla merellä. aallot löivät riemuiten
+kertoja:leikkiä laivan ympärillä. mutta telemakos ei unohtanut uhrata viinejä
+kertoja:jumalille, etenkään atenelle.
+
+$odysseun harharetket kolmas runo
+
+kertoja:seuraavana päivänä auringon noustua keskitaivaalle saapui telemakon
+kertoja:laiva pyloon, jossa nestor hallitsi. rannalle oli kokoontunut paljon
+kertoja:kansaa uhraamaan poseidonille. siellä oli yhdeksän joukkoa, kussakin
+kertoja:viisisataa miestä, ja joka joukolla oli yhdeksänsataa härkää.
+
+kertoja:tulijat käärivät purjeensa ja pysähtyivät rannalle. atene kääntyi nyt
+kertoja:telemakon puoleen, sanoen...
+
 atene:nyt, ystäväni, on sinun astuttava viisaan nestorin eteen
 atene:olet lähtenyt matkaan saadaksesi tietoja isästäsi
 atene:nestor on sanova totuuden ja kertova sinulle, mitä hän isästäsi tietää
@@ -5,6 +426,16 @@ telemakos:mentor, miten uskallan häntä lähestyä
 telemakos:en ole oppinut vielä puhumisen suurta taitoa ja onhan sopimatonta,...
 telemakos:...että nuorempi kyselee vanhemmalta
 atene:sinun on itse mietittävä alkusanat, kyllä jumalat sitten sinua auttavat eteenpäin
+
+kertoja:näin sanoen astui kookas atene edellä ja telemakos seurasi häntä
+kertoja:nestorin luo, joka poikineen istui juhlaa valmistelevan kansansa
+kertoja:keskellä. vieraitten lähestyessä kokoontuivat kaikki heidän ympärilleen
+kertoja:ja nestorin poika peisistratos astui heitä vastaan, johtaen heidät
+kertoja:hiekkarannalle levitetyille patjoille istumaan. sitten hän toi atenelle
+kertoja:viinipikarin, kehoittaen häntä vanhempana vieraana ensin juomaan,
+kertoja:uhraamaan meren jumalalle ja antamaan pikarin sitten nuoremmalle
+kertoja:ystävälleen.
+
 atene:suuri poseidon, kuule pyyntöni, suo nestorin ja hänen poikansa menestyä ja palkitse
 atene:muille pylon miehille heidän uhrinsa
 atene:meitäkin auta, meille suotuisa kotimatka suo ja asiamme toimitetuksi saata
@@ -101,17 +532,62 @@ vale-mentor:huomenna lähden kaukoniaan asioilleni, sillä aikaa kuin sinä läh
 vale-mentor:poikasi telemakon mukana spartaan
 nestor:nyt näen, nyt tiedän, ettet voi olla halpamielinen, koska jo noin nuorena sinua jumalat suosivat 
 nestor:se ei voinut olla kukaan muu kuin pallas atene hän sinun isääsikin erikoisesti suosi
+
+kertoja:seuraavana aamuna astui viisas nestor linnastaan ulos ja istuutui
+kertoja:valtikka kädessä hohtavan valkoiselle, oven vieressä olevalle kivelle,
+kertoja:jolla hänen isänsä neleus oli aikanaan usein istunut. kaikki hänen
+kertoja:kuusi poikaansa astuivat hänen luokseen ja telemakolle tarjottiin
+kertoja:paikka urhean peisistraton rinnalle. kun kaikki olivat kokoontuneet,
+kertoja:alkoi vanhus...
+
 nestor:nyt rientäköön kukin työhön! 
 nestor:yksi teistä lähteköön niityille paimenen luo; sieltä tuotakoon eilisiltana atenelle lupaamani hieho
 nestor:toinen menköön laivalle käskemään telemakon väkeä tänne linnaan 
 nestor:kolmas kutsukoon tänne kultasepän kultaamaan uhrieläimen sarvet 
 nestor:te muut saatte jäädä kotiin juhla-ateriaa valmistamaan
+
+kertoja:kaikki kuninkaan käskyt täytettiin nopeasti. kun hiehon sarvet oli
+kertoja:kullattu, toimitettiin juhlallinen uhri kaikkien nestorin poikien ja
+kertoja:heidän puolisoittensa läsnäollessa. uhrin jälkeen johti nestorin tytär,
+kertoja:kaunis polykaste, telemakon kylpyyn ja hieroi häntä hyvänhajuisilla
+kertoja:öljyillä.
+
+kertoja:kun juhla-ateria oli nautittu, kehoitti nestor poikiaan valjastamaan
+kertoja:vaunujen eteen parhaat juoksijat, kuninkaan viinejä pantiin
+kertoja:matka-eväiksi ja vaunuihin astui telemakos sekä urhea peisistratos,
+kertoja:joka voimakkain käsin tarttui ohjaksiin. pimeän tultua he yöpyivät
+kertoja:ferain kaupunkiin, kuningas diokleen luo, aamulla ani varahin he
+kertoja:jatkoivat matkaa ja saapuivat seuraavana iltana perille lakedaimoniin.
+
+$odysseun harharetket neljäs runo
+
+kertoja:spartassa, kuningas menelaon palatsissa, vietettiin parast'aikaa suuria
+kertoja:juhlia, kaksoishäitä. toisena morsiusparina oli kuninkaan ihana tytär
+kertoja:hermione, suloinen kuin rakkauden jumalatar, ja akilleun poika,
+kertoja:myrmidonien kuningas neoptolemos, toisena morsiusparina menelaon poika,
+kertoja:voimakas megapendes ja spartalaisen alektorin tytär. ensinmainittu
+kertoja:avioliitto oli päätetty jo troiassa, mutta nyt vasta sallivat jumalat
+kertoja:sen päätöksen toteutua. vieraita oli paljon, soitto soi, laulajat
+kertoja:lauloivat ja keskellä salia karkeloivat tanssijat.
+
+kertoja:peisistratos ja telemakos pysäyttivät kaksivaljakkonsa portin eteen.
+kertoja:linnan ylihovimestari huomasi heidät ja riensi heti menelaon luo, virkkaen...
+
 ylihovimestari:kuningas, kaksi vierasta pysäytti hevosensa porttisi eteen 
 ylihovimestari:asultaan he ovat kuin kuninkaan poikia 
 ylihovimestari:riennänkö riisumaan valjaat vai neuvonko heitä muualta asuntoa etsimään?
 menelaos:mehän olemme saaneet niin paljon vieraanvaraisuutta osaksemme maailmalla ...
 menelaos:matkatessamme, lähettäisimmekö heidät siis pois 
 menelaos:ei suinkaan! riennä riisumaan hevoset ja johda vieraat juhliimme
+
+kertoja:puhuteltu kiirehti täyttämään käskyä, vei hevoset talliin ja johti
+kertoja:vieraat komeaan linnaan. täällä nämä ihmetellen katselivat salien
+kertoja:komeaa loistoa. kun he olivat kylpeneet ja saaneet uudet, komeat
+kertoja:viitat, saatettiin heidät kuninkaan luo. orjattaret toivat vettä
+kertoja:kultakannuilla, huuhtelivat vieraitten kädet hopeamaljoissa ja
+kertoja:kattoivat sitten heille ruokapöydät. menelaos tervehti heitä, pyysi
+kertoja:aterioitsemaan ja virkkoi...
+
 menelaos:kun olette ravitut, kertokaa, keitä olette ja mikä on asianne
 menelaos:kuninkaitten sukua olette, siitä puhuu käytöksenne
 telemakos:katsos, peisistratos, katsos tätä kullan ja hopean hohtoa 
@@ -123,6 +599,19 @@ menelaos:vaikka omistaisin ainoastaan kolmanneksen tästä kaikesta, olisin kyll
 menelaos:kunhan ei tarvitsisi surra sotatielle sortuneita 
 menelaos:ja katkerimmin kaikista suren verratonta odysseusta 
 menelaos:elääkö hän vai onko hän kuollut, siitä ei tiedä kenkään
+
+kertoja:telemakos, kuullessaan isästään puhuttavan, peitti purppuraviitallaan
+kertoja:kasvonsa, jotteivät kyyneleet näkyisi. silloin menelaos huomasi, että
+kertoja:nuori vieras oli odysseun poika. hän miettimään, puhuisiko
+kertoja:nuorukaiselle vielä hänen isästään vai koettelisiko häntä toisin
+kertoja:sanoin. hänen siinä miettiessään astui sisään kauneudestaan kuulu
+kertoja:helena-kuningatar. heti riensi kolme orjaa palvelemaan häntä. yksi
+kertoja:asetti esille komean istuimen, toinen levitti maahan hienon villavaipan
+kertoja:ja kolmas ojensi hänelle hopeakorin, jonka hän kerran oli saanut
+kertoja:lahjaksi egyptin kuningattarelta alkandralta. korissa oli mitä
+kertoja:hienointa lankaa, helenan kehräämää, ja nytkin hän otti käteensä
+kertoja:kultavärttinän. istuttuaan kääntyi ihana kuningatar puolisonsa puoleen...
+
 helena:sano, joko tiedät keitä vieraamme ovat? 
 helena:arvannenko oikein, mutta en milloinkaan ole nähnyt ketään, joka olisi niin
 helena:odysseun näköinen kuin tämä vieras 
@@ -142,6 +631,12 @@ menelaos:osoitteeksi lahjoittanut hänelle
 menelaos:argossa kaupungin ja asunnon, jonne hän olisi saanut tuoda koko itakan
 menelaos:kansan silloin olisimme saaneet usein tavata toisiamme ja viettää
 menelaos:yhdessä vanhuutemme päivät mutta jumalat eivät ole sitä sallineet
+
+kertoja:hänen sanansa saivat kyyneleihin sekä kuninkaan itsensä että ihanan
+kertoja:helenan ja telemakon. eipä peisistratoskaan voinut kyyneleitään
+kertoja:pidättää, sillä hänen mieleensä johtui hänen antilokos-veljensä, joka
+kertoja:sai troiassa surmansa. mutta hän lausui...
+
 peisistratos:kuningas, sinua, jos ketä, kutsuu isäni viisaaksi kertoellessaan salissamme sinusta 
 peisistratos:mutta ehkä sittenkin tahdot neuvoani noudattaa
 peisistratos:itku ja suru eivät sovi juhla-ateriaan koittaahan päivä huomennakin
@@ -150,6 +645,15 @@ peisistratos:ja olihan siellä minunkin armas veljeni, joka ei suinkaan ollut kr
 peisistratos:sinäkin tiedät, että hän oli juoksussa nopea ja sodassa urhea
 menelaos:viisaasti puhut näen, että olet onnellisen nestorin älykäs poika 
 menelaos:jatkakaamme ateriaamme huomenna keskustelen telemakon kanssa
+
+kertoja:ihana helena sekoitti silloin viinipikareihin nestettä, jolla on se
+kertoja:ominaisuus, ettei sitä nauttinut sinä päivänä tunne surua eikä vuodata
+kertoja:kyyneltäkään, vaikka hänen oma isänsä tai äitinsä joutuisi kuolon
+kertoja:uhriksi aivan hänen silmäinsä edessä. tämän taikajuoman hän oli saanut
+kertoja:egyptiläiseltä kuninkaantyttäreltä polydamnalta. egyptissä kasvaakin
+kertoja:monenlaisia yrttejä ja siellä on kukin oma lääkärinsä. tämän ihmejuoman
+kertoja:valmistettuaan helena puhui...
+
 helena:menelaos, atreun poika, ja te muut kreikan miehet! 
 helena:ei zeus ole kaikille samaa kohtaloa suonut toisilla on iloa, toisilla surua 
 helena:mutta iloitkaa nyt te 
@@ -174,6 +678,14 @@ menelaos:odysseus olisi pakottanut meitä vaikenemaan siten hän pelasti kreikka
 menelaos:omin käsin hän tukki innokkaimman suun, kunnes atene johti sinut pois
 telemakos:niin viisas oli odysseus ja sittenkin hän on joutunut turmion omaksi
 telemakos:mutta jo on aika käydä levolle, jotta huomenna jaksamme uusin voimin nousta
+
+kertoja:kuningatar lähetti silloin orjattarensa valmistamaan vieraille
+kertoja:purppuravaippaiset vuoteet.
+
+kertoja:varhain seuraavana aamuna pukeutui menelaos kuninkaanvaippaansa, vyötti
+kertoja:vyölleen terävän miekkansa ja sitoi jalkaansa kevyet sandaalit.
+kertoja:pukeuduttuaan hän kääntyi telemakon puoleen, sanoen...
+
 menelaos:ystäväni, nyt toivon sinun vastaavan suoraan, mikä sinut saattoi tänne pyhään spartaan? 
 menelaos:koskeeko asia sinua yksin vai onko se yleisempää laatua?
 telemakos:läksin tänne saadakseni kuulla sinulta isästäni 
@@ -188,3 +700,5 @@ menelaos:on vasikoiden loppu surkea
 menelaos:niin on käypä silloinkin, kun odysseus kerran palajaa
 menelaos:pyysit minua kertomaan, mitä tiedän, ja olen sen tekevä 
 menelaos:mitään peittelemättä kerron, mitä vanhalta merenhaltijalta kuulin
+
+bot:...---*** tarina loppuu tältä erää tähän ***---...
