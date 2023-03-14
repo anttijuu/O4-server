@@ -11,9 +11,10 @@ import org.json.JSONObject;
 public class ChatMessage extends Message {
     private UUID id = UUID.randomUUID();
     private UUID inReplyTo;
+    private String directMessageTo;
     private LocalDateTime sent;
     private String nick;
-	private String message;
+    private String message;
 
     private static final DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_LOCAL_TIME;
     private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
@@ -52,8 +53,24 @@ public class ChatMessage extends Message {
         return id;
     }
 
+    public UUID isReplyTo() {
+        return inReplyTo;
+    }
+
     public void setAsReplyTo(UUID inReplyTo) {
         this.inReplyTo = inReplyTo;
+    }
+
+    public boolean isDirectMessage() {
+        return directMessageTo != null;
+    }
+
+    public String directMessageRecipient() {
+        return directMessageTo;
+    }
+
+    public void setRecipient(String recipientNick) {
+        directMessageTo = recipientNick;
     }
 
     public String getNick() {
@@ -66,14 +83,18 @@ public class ChatMessage extends Message {
 
     public String getMessage() {
         return message;
-   }
+    }
 
-   public void setMessage(String message) {
+    public void setMessage(String message) {
         this.message = message;
-   }
+    }
 
     public long dateAsLong() {
         return sent.toInstant(ZoneOffset.UTC).toEpochMilli();
+    }
+
+    public LocalDateTime getSent() {
+        return this.sent;
     }
 
     public void setSent(long epoch) {
@@ -93,6 +114,9 @@ public class ChatMessage extends Message {
         object.put("id", id.toString());
         if (null != inReplyTo) {
             object.put("inReplyTo", inReplyTo.toString());
+        }
+        if (null != directMessageTo) {
+            object.put("directMessageTo", directMessageTo);
         }
         object.put("type", getType());
         object.put("user", nick);

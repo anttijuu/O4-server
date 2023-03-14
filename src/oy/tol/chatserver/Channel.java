@@ -6,6 +6,7 @@ import java.util.List;
 import oy.tol.chat.ChangeTopicMessage;
 import oy.tol.chat.ErrorMessage;
 import oy.tol.chat.Message;
+import oy.tol.chat.ChatMessage;
 
 public class Channel {
 	private String name = "";
@@ -67,11 +68,22 @@ public class Channel {
 	public synchronized void relayMessage(ChatServerSession fromSession, Message message) {
 		System.out.println("Relaying msg to " + sessions.size() + " clients");
 		sessions.forEach( session -> {
-			if (session != fromSession) {
+			if (session != fromSession && !((ChatMessage)message).isDirectMessage()) {
 				session.write(message);
 			}
 		});	
 	}
+
+	public boolean relayPrivateMessage(ChatServerSession fromSession, ChatMessage message) {
+		for (ChatServerSession session : sessions) {
+			if (session != fromSession && message.directMessageRecipient().equals(session.userName())) {
+				session.write(message);
+				return true;
+			}
+		}
+		return false;
+	}
+
 
 	public synchronized void closeAllSessions(String message) {
 		ErrorMessage msg = new ErrorMessage(message, true);

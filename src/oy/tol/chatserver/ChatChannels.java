@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import oy.tol.chat.ChatMessage;
+
 public class ChatChannels {
 
 	private 	Map<String, Channel> channels;
@@ -104,6 +106,17 @@ public class ChatChannels {
 			channelNames.add(name + " (" + channel.sessionCount() + ")");
 		});
 		return channelNames;
+	}
+
+	public synchronized void relayPrivateMessage(ChatServerSession session, ChatMessage message) {
+		if (!message.isDirectMessage()) {
+			return;
+		}
+		channels.forEach( (name, channel) -> {
+			if (channel.relayPrivateMessage(session, message)) {
+				return;
+			}
+		});
 	}
 
 	public synchronized void closeAll(String message) {

@@ -26,6 +26,10 @@ public class MessageFactory {
 					String replyID =jsonObject.getString("inReplyTo");
 					((ChatMessage)message).setAsReplyTo(UUID.fromString(replyID));
 				}
+				if (jsonObject.has("directMessageTo")) {
+					String recipientNick = jsonObject.getString("directMessageTo");
+					((ChatMessage)message).setRecipient(recipientNick);
+				}
 				break; 
 			}
 

@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import oy.tol.chat.ChangeTopicMessage;
+import oy.tol.chat.ChatMessage;
 import oy.tol.chat.ErrorMessage;
 import oy.tol.chat.JoinMessage;
 import oy.tol.chat.ListChannelsMessage;
@@ -29,7 +30,7 @@ public class ChatServerSession implements Runnable {
 	}
 
 	private Socket socket;
-	private User user;
+	private String nick;
 	private State state = State.UNCONNECTED;
 	private PrintWriter out;
 	private BufferedReader in;
@@ -66,8 +67,8 @@ public class ChatServerSession implements Runnable {
 	}
 
 	public String userName() {
-		if (null != user) {
-			return user.getName();
+		if (null != nick) {
+			return nick;
 		}
 		return "";
 	}
@@ -80,7 +81,7 @@ public class ChatServerSession implements Runnable {
 				atChannel.remove(this);
 			}
 			state = State.UNCONNECTED;
-			user = null;
+			nick = null;
 			if (null != socket) socket.close();
 			if (null != in) in.close();
 			if (null != out) out.close();
@@ -141,7 +142,7 @@ public class ChatServerSession implements Runnable {
 			int msgType = msg.getType();
 			switch (msgType) {
 				case Message.CHAT_MESSAGE:
-					handleChatMessage(msg);
+					handleChatMessage((ChatMessage)msg);
 					break;
 
 				case Message.JOIN_CHANNEL:
@@ -189,9 +190,16 @@ public class ChatServerSession implements Runnable {
 		ChatChannels.getInstance().move(this, channel);
 	}
 
-	private void handleChatMessage(Message msg) {
+	private void handleChatMessage(ChatMessage msg) {
 		if (null != atChannel) {
-			atChannel.relayMessage(this, msg);
+			if (nick == null || !nick.equals(msg.getNick())) {
+				nick = msg.getNick();
+			}
+			if (msg.isDirectMessage()) {
+				ChatChannels.getInstance().relayPrivateMessage(this, msg);
+			} else {
+				atChannel.relayMessage(this, msg);
+			}
 		} else {
 			System.out.println("Channel for session is null so cannot relay messages to other sessions");
 		}
