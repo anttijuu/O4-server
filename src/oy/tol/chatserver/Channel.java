@@ -68,7 +68,7 @@ public class Channel {
 	public synchronized void relayMessage(ChatServerSession fromSession, Message message) {
 		System.out.println("Relaying msg to " + sessions.size() + " clients");
 		sessions.forEach( session -> {
-			if (session != fromSession && !((ChatMessage)message).isDirectMessage()) {
+			if (session != fromSession) {
 				session.write(message);
 			}
 		});	
