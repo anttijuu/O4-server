@@ -34,11 +34,11 @@ public class Channel {
 		this.name = name;
 	}
 
-	public String getTopic() {
+	public synchronized String getTopic() {
 		return topic;
 	}
 
-	public void setTopic(String topic) {
+	public synchronized void setTopic(String topic) {
 		this.topic = topic;
 		ChangeTopicMessage topicChanged = new ChangeTopicMessage(topic);
 		relayMessage(null, topicChanged);
@@ -48,23 +48,23 @@ public class Channel {
 		return isPermanent;
 	}
 	
-	public void add(ChatServerSession session) {
+	public synchronized void add(ChatServerSession session) {
 		sessions.add(session);
 	}
 
-	public void remove(ChatServerSession session) {
+	public synchronized void remove(ChatServerSession session) {
 		sessions.remove(session);
 	}
 
-	public boolean hasSessions() {
+	public synchronized boolean hasSessions() {
 		return !sessions.isEmpty();
 	}
 
-	public int sessionCount() {
+	public synchronized int sessionCount() {
 		return sessions.size();
 	}
 
-	public void relayMessage(ChatServerSession fromSession, Message message) {
+	public synchronized void relayMessage(ChatServerSession fromSession, Message message) {
 		System.out.println("Relaying msg to " + sessions.size() + " clients");
 		sessions.forEach( session -> {
 			if (session != fromSession) {
@@ -73,7 +73,7 @@ public class Channel {
 		});	
 	}
 
-	public void closeAllSessions(String message) {
+	public synchronized void closeAllSessions(String message) {
 		ErrorMessage msg = new ErrorMessage(message, true);
 		sessions.forEach( session -> {			
 			session.write(msg);

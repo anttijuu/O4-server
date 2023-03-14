@@ -16,7 +16,7 @@
 			"request": "launch",
 			"mainClass": "oy.tol.chatserver.ChatSocketServer",
 			"projectName": "ChatServer",
-			"args": "/Users/anttijuustila/workspace/O4/O4-server/chatserver.properties"
+			"args": "/Users/juustila/workspace/O4/O4-server/chatserver.properties"
 		}
 	]
 }
