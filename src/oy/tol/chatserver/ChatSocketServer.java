@@ -7,8 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Properties;
 
@@ -28,7 +26,7 @@ public class ChatSocketServer implements Runnable {
 		try {
 			System.out.println("Launching ChatServer...");
 			if (args.length != 1) {
-				System.out.println("Usage java -jar jar-file.jar config.properties");
+				System.out.println("Usage java -jar jar-file.jar chatserver.properties");
 				return;
 			}
 			server = new ChatSocketServer(args);
