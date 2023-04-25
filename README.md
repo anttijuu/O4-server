@@ -95,8 +95,9 @@ A message can also be a *private* message to a specific nick. In that case, the 
 	"message":"tere",
 	"sent":1682415878227
 }
+```
 
-Direct messages are delivered only to the recipient.
+Direct messages are delivered only to the addressed recipient.
 
 > Note: the server does not know about the existence of a user/nick *before that user sends their first message*.
 
