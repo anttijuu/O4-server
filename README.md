@@ -185,7 +185,14 @@ Currently server supports only one bot channel at a time.
 
 ## Building
 
-Build the server (in the root source directory):
+The following are needed to build and run the server:
+
+* JDK 18 or later.
+* Maven for building and packaging the executable.
+* JSON library (see details from pom.xml, Maven will download and install this when building).
+* An IDE if you wish to view and/or edit the code (e.g. Visual Studio Code with Java extensions, or Eclipse).
+
+Build the server (in the root directory of the project, where the `pom.xml` is located):
 
 ```console
 mvn package
