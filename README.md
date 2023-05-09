@@ -1,6 +1,6 @@
 # O4-server
 
-This is a simple Java chat server implemented for Programming 4 course. The course teachers client side GUI programming. Students can use this server to develop their own GUI clients.
+This is a simple Java chat server implemented for Programming 4 course. The course teachers client side GUI programming. Students can use this server to develop their own GUI clients. A [sample console chat client](https://github.com/anttijuu/O4-client) can be used as a reference in GUI client development.
 
 Underlying protocol the server and clients use is TCP. 
 
@@ -25,7 +25,9 @@ Java Message classes in `oy.tol.chat` package implement these message types. The
 
 Converting Message objects to JSON text is implemented in `Message.toJSON()` methods. Parsing message objects from JSONObjects is done in `MessageFactory.fromJSON(JSONObject)`.
 
-Message contents in JSON are specified below.
+Message contents in JSON are specified below. 
+
+> Note that the chat protocol requires that each individual message is encoded/decoded using UTF-8 and is terminated with newline `\n` character. The provided `Message` classes and the client side `ChatTCPClient` class fulfills these requirements.
 
 ### Error message
 
