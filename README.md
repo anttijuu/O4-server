@@ -31,12 +31,12 @@ Message contents in JSON are specified below.
 
 Error messages are sent by the server only.
 
-If the value of `clientshutdown` is different from zero (0), the error *requires* the clients to shut down. This implies the server is either shutting down or has had a critical error and cannot continue. 
+If the value of `clientshutdown` is different from zero (0), the error *requires* the clients to shut down the connection with the server. This implies the server is either shutting down (initiated by the admin) or has had a critical error and cannot continue. 
 
 ```JSON
 {
 	"type": -1,
-	"error" : "some error message here",
+	"error" : "Some error message here",
 	"clientshutdown": 0
 }
 ```
@@ -48,7 +48,7 @@ Status messages are sent by the server only. They indicate some event on the ser
 ```JSON
 {
 	"type": 0,
-	"status" : "some status message here"
+	"status" : "Some status message here"
 }
 ```
 
@@ -56,7 +56,7 @@ Status messages are sent by the server only. They indicate some event on the ser
 
 A client sends chat messages to the server, and server relays chat messages to other clients in the same *channel*.
 
-Here is a simple chat message, from user "telemakos". 
+Below you can see a simple chat message, from user "telemakos". 
 
 The `sent` element is a UTC timestamp in unix time. Clients must convert the local time to UTC before sending the `ChatMessage` to the server. Also, clients must convert the UTC time to client's local time before showing the time of the incoming messages to the user.
 
@@ -71,7 +71,7 @@ The `id` element must be a valid UUID.
 	"sent":16782697319
 }
 ```
-A chat message can also be a **reply** to another chat message. In this case, the JSON contains an optional element `inReplyTo`: 
+A chat message can also be a **reply to** another chat message. In this case, the JSON contains an *optional* element `inReplyTo`: 
 
 ```JSON
 {
@@ -83,9 +83,9 @@ A chat message can also be a **reply** to another chat message. In this case, th
 	"sent":16782697319
 }
 ```
-The UUID in the `inReplyTo` field *must* be a valid chat message sent before the reply message in the same channel.
+The UUID in the `inReplyTo` field *must* be a valid chat message sent *before* the reply message in the same channel.
 
-A private message has a field `directMessageTo`:
+A *private message* has an optional field `directMessageTo`:
 
 ```JSON
 {
@@ -97,6 +97,8 @@ A private message has a field `directMessageTo`:
 	"sent":16782697319
 }
 ```
+Here Telemakos is sending a private message to Athene. 
+
 Private message is relayed only to the chat user connected to the server using the provided nick / user name. It is *not* relayed to other participants in any channel. 
 
 > Note that the server cannot relay private messages to a user unless the user has sent at least one message using the nick in the current session with server. Note also that the server does not implement any means to make sure user nicks are unique. Private message is then relayed to the first nick found.
@@ -154,12 +156,11 @@ When the server receives this query, it will create a response with the same mes
 ```
 The numbers with each channel indicate the number of users currently on that channel.
 
-
 ## Bot channel
 
 Server may also host a *bot channel*. Bot channel loads messages from a text file. A channel gets it's name from the file name (minus extension). 
 
-If a user joins the channel, the bot channel starts to send chat messages to that channel, from the loaded text file. When the last user leaves the bot channel, no messages are sent.
+If a user joins the channel, the bot channel starts to send chat messages from the text file to that channel, from the loaded text file. When the last user leaves the bot channel, no messages are sent, until a user again joins the channel.
 
 Bot channels are never closed, similarily to "main" channel. Thus, when users list available channels on the server, the bot channel (if configured) is also listed as an available channel.
 
@@ -190,7 +191,15 @@ mvn package
 
 ## Running 
 
-First edit the settings in `chatserver.properties` if necessary.
+First review the settings in `chatserver.properties` if necessary. Settings file has the following items:
+
+```
+port=10000
+botchannel=odysseu
+```
+
+* `port` is the TCP port number the server is listening to for client connections. Make sure the port is not used by other apps nor services in your system.
+* `botchannel` indicates the bot channel name as well as the file name containing the messages server sends to the bot channel if any users are on that channel.
 
 Then run (assuming the server has been built) the server:
 
@@ -200,7 +209,11 @@ java -jar target/ChatServer-0.0.1-SNAPSHOT-jar-with-dependencies.jar chatserver.
 
 Where the first parameter is the configuration file you wish to use to run the server.
 
-Your operating system may ask you to permit the server to accept incoming connections. Obviously you should allow this.
+Your operating system may ask for your permit so that the server can accept incoming connections. Obviously you should allow this.
+
+The `main` method launching the server can be found in class `ChatSocketServer`.
+
+> Be aware of the security implications on open Wi-Fi connections. Close the server when you no longer test your client. Note also that your local network may have configurations or firewalls preventing traffic on certain ports or protocols. In this case the server and client cannot connect. If having issues like this, check out your router settings.
 
 You can stop the server in a controlled way from the console with `/quit` command. An error message with shutdown required flag is sent to all connected clients before the server shuts down.
 
