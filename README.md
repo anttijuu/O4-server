@@ -58,6 +58,8 @@ Status messages are sent by the server only. They indicate some event on the ser
 
 A client sends chat messages to the server, and server relays chat messages to other clients in the same *channel*.
 
+A message sent by a client is *not* sent back to that same client by the server (echoed).
+
 Below you can see a simple chat message, from user "telemakos". 
 
 The `sent` element is a UTC timestamp in unix time. Clients must convert the local time to UTC before sending the `ChatMessage` to the server. Also, clients must convert the UTC time to client's local time before showing the time of the incoming messages to the user.
@@ -103,7 +105,7 @@ Here Telemakos is sending a private message to Athene.
 
 Private message is relayed only to the chat user connected to the server using the provided nick / user name. It is *not* relayed to other participants in any channel. 
 
-> Note that the server cannot relay private messages to a user unless the user has sent at least one message using the nick in the current session with server. Note also that the server does not implement any means to make sure user nicks are unique. Private message is then relayed to the first nick found.
+> Note that the server cannot relay private messages to a user unless the user has sent at least one message using the nick in the current session with server. Note also that the server does not implement any means to make sure user nicks are unique. Private message is then relayed to the first nick found. If no user with that nick is found, the message is lost.
 
 ### Join channel message
 
