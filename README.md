@@ -21,7 +21,7 @@ Message types are the following:
 |  3   | Change topic message |
 |  4   | List channels message|
 
-Java Message classes in `oy.tol.chat` package implement these message types. 
+Java Message classes in `oy.tol.chat` package implement these message types. These classes can be used both in server side and in client side.
 
 Converting Message objects to JSON text is implemented in `Message.toJSON()` methods. Parsing message objects from JSONObjects is done in `MessageFactory.fromJSON(JSONObject)`.
 
@@ -31,7 +31,7 @@ Message contents in JSON are specified below.
 
 Error messages are sent by the server only.
 
-If the value of `clientshutdown` is different from zero (0), the error requires the clients to shut down. This implies the server is either shutting down or has had a critical error and cannot continue. 
+If the value of `clientshutdown` is different from zero (0), the error *requires* the clients to shut down. This implies the server is either shutting down or has had a critical error and cannot continue. 
 
 ```JSON
 {
@@ -83,6 +83,23 @@ A chat message can also be a **reply** to another chat message. In this case, th
 	"sent":16782697319
 }
 ```
+The UUID in the `inReplyTo` field *must* be a valid chat message sent before the reply message in the same channel.
+
+A private message has a field `directMessageTo`:
+
+```JSON
+{
+	"type" : 1,
+	"id" : "d4986bec-8026-462a-9a7a-f04eebcf7612",
+	"message" : "mutta lopettakaa te hurjistelunne ja vierailkaa",
+	"user" : "telemakos", 
+	"directMessageTo" : "athene", 
+	"sent":16782697319
+}
+```
+Private message is relayed only to the chat user connected to the server using the provided nick / user name. It is *not* relayed to other participants in any channel. 
+
+> Note that the server cannot relay private messages to a user unless the user has sent at least one message using the nick in the current session with server. Note also that the server does not implement any means to make sure user nicks are unique. Private message is then relayed to the first nick found.
 
 ### Join channel message
 
@@ -97,7 +114,7 @@ When the last user leaves the channel, it is closed. The channel "main" is an ex
 }
 ```
 
-Users should keep the channel names short since displaying long channel names is not convenient. Currently the server does not limit channel or nick (user) name lengths.
+Users should keep the channel names short since displaying long channel names is inconvenient. Currently the server does not limit channel nor nick (user) name lengths.
 
 ### Change topic message
 
@@ -140,9 +157,9 @@ The numbers with each channel indicate the number of users currently on that cha
 
 ## Bot channel
 
-Server may also host a *bot channel*. Bot channel loads messages from a text file. A channel gets it's name from the file name. 
+Server may also host a *bot channel*. Bot channel loads messages from a text file. A channel gets it's name from the file name (minus extension). 
 
-If a user joins the channel, the bot channel starts to send chat messages to that channel. When the last user leaves the bot channel, no messages are sent.
+If a user joins the channel, the bot channel starts to send chat messages to that channel, from the loaded text file. When the last user leaves the bot channel, no messages are sent.
 
 Bot channels are never closed, similarily to "main" channel. Thus, when users list available channels on the server, the bot channel (if configured) is also listed as an available channel.
 
@@ -182,6 +199,8 @@ java -jar target/ChatServer-0.0.1-SNAPSHOT-jar-with-dependencies.jar chatserver.
 ```
 
 Where the first parameter is the configuration file you wish to use to run the server.
+
+Your operating system may ask you to permit the server to accept incoming connections. Obviously you should allow this.
 
 You can stop the server in a controlled way from the console with `/quit` command. An error message with shutdown required flag is sent to all connected clients before the server shuts down.
 
