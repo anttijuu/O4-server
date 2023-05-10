@@ -120,12 +120,14 @@ public class ChatSocketServer implements Runnable {
 		istream.close();
 		log("Server port: " + serverPort, ANSI_YELLOW);
 		botChannelName = config.getProperty("botchannel", "");
-		File botFile = new File(botChannelName + ".txt");
-		if (!botFile.isFile()) {
-			log("Bot file does not exist", ANSI_RED);
-			botChannelName = "";
-		} else {
-			log("Using bot channel " + botChannelName, ANSI_GREEN);
+		if (botChannelName.length() > 0) {
+			File botFile = new File(botChannelName + ".txt");
+			if (!botFile.isFile()) {
+				log("Bot file does not exist", ANSI_RED);
+				botChannelName = "";
+			} else {
+				log("Using bot channel " + botChannelName, ANSI_GREEN);
+			}	
 		}
 	}
 }

@@ -27,7 +27,7 @@ Converting Message objects to JSON text is implemented in `Message.toJSON()` met
 
 Message contents in JSON are specified below. 
 
-> Note that the chat protocol requires that each individual message is encoded/decoded using UTF-8 and is terminated with newline `\n` character. The provided `Message` classes and the client side `ChatTCPClient` class fulfills these requirements.
+> Note that the chat protocol requires that each individual message is encoded/decoded using UTF-8 and is terminated with newline `\n` character. The provided `Message` classes and the client side `ChatTCPClient` class as well as the server side `ChatServerSession` classes fulfill these requirements.
 
 ### Error message
 
