@@ -14,7 +14,7 @@ import oy.tol.chat.ChatMessage;
 import oy.tol.chat.Message;
 
 public class BotChannel extends Channel {
-	
+
 	private boolean botActive = false;
 	private Timer timer;
 	private static final int MIN_TIMER_GAP_MS = 1500;
@@ -30,7 +30,8 @@ public class BotChannel extends Channel {
 				relayMessage(null, message);
 			}
 			int nextGap = ThreadLocalRandom.current().nextInt(MAX_TIMER_GAP_MS) + MIN_TIMER_GAP_MS;
-			timer.schedule(new PostMessageTask(), nextGap);		}
+			timer.schedule(new PostMessageTask(), nextGap);
+		}
 	}
 
 	public BotChannel(String name) {
@@ -39,24 +40,24 @@ public class BotChannel extends Channel {
 	}
 
 	@Override
-	public void add(ChatServerSession session) {
+	public synchronized void add(ChatServerSession session) {
 		System.out.println("BOT: a client joined the bot channel");
 		super.add(session);
 		try {
 			activateBot();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}		
+		}
 	}
 
 	@Override
-	public void closeAllSessions(String message) {
+	public synchronized void closeAllSessions(String message) {
 		super.closeAllSessions(message);
 		deactivateBot();
 	}
 
 	@Override
-	public void remove(ChatServerSession session) {
+	public synchronized void remove(ChatServerSession session) {
 		System.out.println("BOT: a client departed the bot channel");
 		super.remove(session);
 		if (!hasSessions()) {
@@ -89,7 +90,7 @@ public class BotChannel extends Channel {
 			int firstColonIndex = nextItem.indexOf(':');
 			if (firstColonIndex > 0) {
 				String nick = nextItem.substring(0, firstColonIndex);
-				String msgText = nextItem.substring(firstColonIndex+1);
+				String msgText = nextItem.substring(firstColonIndex + 1);
 				msg = new ChatMessage(nick, msgText);
 			}
 		}
