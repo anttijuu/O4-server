@@ -1,6 +1,6 @@
 # O4-server
 
-This is a simple Java chat server implemented for Programming 4 course. The course teachers client side GUI programming. Students can use this server to develop their own GUI clients. A [sample console chat client](https://github.com/anttijuu/O4-client) can be used as a reference in GUI client development.
+This is a simple Java chat server implemented for Programming 4 course. The course teaches client side GUI programming. Students can use this server to develop their own GUI clients. A [sample console chat client](https://github.com/anttijuu/O4-client) can be used as a reference in GUI client development.
 
 Underlying protocol the server and clients use is TCP. 
 
